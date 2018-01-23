@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/lib/gson-2.7.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/SchemaExtractor.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/voltdb-6.9.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/log4j-1.2.16.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/args4j-2.33.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="gson-2.7.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/gson-2.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="SchemaExtractor.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/SchemaExtractor.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="voltdb-6.9.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/voltdb-6.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="log4j-1.2.16.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/log4j-1.2.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="args4j-2.33.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/args4j-2.33.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

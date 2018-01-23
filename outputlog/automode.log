@@ -1,0 +1,192 @@
+2018-01-23 08:05:59 DEBUG AutoModeMain:95 - Inside run exact is true, approx is false
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - Inside run target is advisedby, sp is UWCSEProcedure
+2018-01-23 08:05:59 DEBUG AutoModeMain:126 - Inside exact
+2018-01-23 08:05:59 DEBUG AutoModeMain:23 - ------------------ Generating Exact Mode  -----------------------
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(hasposition.professor)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (hasposition.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (professor.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (professor.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (hasposition.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(yearsinprogram.student)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (yearsinprogram.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (inphase.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (inphase.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (yearsinprogram.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(advisedby.student)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (advisedby.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (inphase.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (inphase.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (yearsinprogram.student) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (yearsinprogram.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (advisedby.student) has Vertex Type  [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(taughtby.term)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.term) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.term) has Vertex Type  [T12]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(ta.term)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (ta.term) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.term) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.term) has Vertex Type  [T12]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (ta.term) has Vertex Type  [T12]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(taughtby.course)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.course) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (courselevel.course) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (courselevel.course) has Vertex Type  [T2]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.course) has Vertex Type  [T2]
+2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
+  --------Assigning Type to  --------(advisedby.advisor)
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (advisedby.advisor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (hasposition.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (hasposition.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (professor.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (professor.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (advisedby.advisor) has Vertex Type  [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:308 - --------------- Printing Cycles ----------------
+2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T4, T6, T5]
+2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T10, T8, T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T1, T2]
+2018-01-23 08:05:59 DEBUG AutoModeMain:301 - 
+ -----------------Vertex type -------------------------
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T4 (hasposition.professor) Type [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T5 (professor.professor) Type [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T6 (taughtby.professor) Type [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T10 (yearsinprogram.student) Type [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T7 (advisedby.student) Type [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T8 (inphase.student) Type [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T12 (taughtby.term) Type [T12]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T9 (student.student) Type [T9]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T11 (ta.term) Type [T12]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T1 (taughtby.course) Type [T2]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T2 (courselevel.course) Type [T2]
+2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T3 (advisedby.advisor) Type [T6]
+2018-01-23 08:05:59 DEBUG AutoModeMain:42 - Relations Size :: 9
+2018-01-23 08:05:59 DEBUG AutoModeMain:147 - Relations Size :: 9
+2018-01-23 08:05:59 DEBUG VoltDBQuery:70 - Connected to VoltDB node at: %s.
+localhost:21212
+2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: inphase.phase
+2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: hasposition.pos
+2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: courselevel.level
+2018-01-23 08:06:00 DEBUG VoltDBQuery:83 - Closing Voltdb connection
+2018-01-23 08:06:00 DEBUG AutoModeMain:203 - 
+ ----------------  Predicates Exact ------------------------
+2018-01-23 08:06:00 DEBUG AutoModeMain:226 - HEADMODE :: advisedby(+T9,+T6)
+2018-01-23 08:06:00 DEBUG AutoModeMain:215 - professor(+T6)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(+T2,#T18)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(+T2,-T18)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(-T2,+T18)
+2018-01-23 08:06:00 DEBUG AutoModeMain:215 - student(+T9)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - yearsinprogram(+T9,-T15)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - yearsinprogram(-T9,+T15)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(+T9,#T13)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(+T9,-T13)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(-T9,+T13)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(+T2,-T6,-T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(-T2,+T6,-T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(-T2,-T6,+T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(-T16,-T17,+T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(-T16,+T17,-T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(+T16,-T17,-T12)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(+T6,#T14)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(+T6,-T14)
+2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(-T6,+T14)
+2018-01-23 08:06:00 DEBUG AutoModeMain:48 - ------------------ HeadMode formed correctly  size is 1 -----------------------
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.professor) has Vertex Type  [T4] and vertex Id = T9
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (professor.professor) has Vertex Type  [T4] and vertex Id = T8
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.professor) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.professor) has Vertex Type  [T4] and vertex Id = T9
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (advisedby.advisor) has Vertex Type  [T4] and vertex Id = T7
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(taughtby.course)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(courselevel.course)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (courselevel.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (courselevel.course) has Vertex Type  [T12] and vertex Id = T11
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(taughtby.term)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.term) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.term) has Vertex Type  [T14] and vertex Id = T14
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(ta.course)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (courselevel.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (courselevel.course) has Vertex Type  [T12] and vertex Id = T11
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.course) has Vertex Type  [T12] and vertex Id = T13
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(ta.term)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.term) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.term) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.term) has Vertex Type  [T14] and vertex Id = T14
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.term) has Vertex Type  [T14] and vertex Id = T15
+2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+ --------Assigning Type to  --------(advisedby.student)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (advisedby.student) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (yearsinprogram.student) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (yearsinprogram.student) has Vertex Type  [T2] and vertex Id = T2
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (student.student) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (student.student) has Vertex Type  [T2] and vertex Id = T3
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (inphase.student) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (inphase.student) has Vertex Type  [T2] and vertex Id = T5
+2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.student) >> 
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.student) has Vertex Type  [T2] and vertex Id = T6
+2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (ta.student)
+2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (advisedby.student) has Vertex Type  [T4, T6, T2] and vertex Id = T1
+2018-01-23 08:21:12 DEBUG AutoModeMain:307 - --------------- Printing Cycles ----------------
+2018-01-23 08:21:12 DEBUG AutoModeMain:300 - 
+ -----------------Vertex type -------------------------
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T4 (publication.author) Type [T2]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T5 (inphase.student) Type [T2]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T6 (ta.student) Type [T2]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T7 (advisedby.advisor) Type [T4]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T8 (professor.professor) Type [T4]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T9 (taughtby.professor) Type [T4]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T10 (hasposition.professor) Type [T4]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T12 (taughtby.course) Type [T12]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T11 (courselevel.course) Type [T12]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T14 (taughtby.term) Type [T14]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T13 (ta.course) Type [T12]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T15 (ta.term) Type [T14]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T1 (advisedby.student) Type [T4, T6, T2]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T2 (yearsinprogram.student) Type [T2]
+2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T3 (student.student) Type [T2]
