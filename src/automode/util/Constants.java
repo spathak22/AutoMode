@@ -28,7 +28,7 @@ public class Constants {
     }
 
     public enum Regex {
-        CLOSE_PARENTHESIS(")"), OPEN_PARENTHESIS("("), PARENTHESIS(") < ("), PERIOD("."), SUBSET("<"), SEMICOLON(";"),
+        SPLITON_OPEN_PARENTHESIS("\\("), CLOSE_PARENTHESIS(")"), OPEN_PARENTHESIS("("), PARENTHESIS(") < ("), PERIOD("."), SUBSET("<"), SEMICOLON(";"),
         COMMA(","), OPEN_BRACKET("["), CLOSE_BRACKET("]");
         private String value;
 

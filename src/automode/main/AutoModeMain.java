@@ -110,7 +110,7 @@ public class AutoModeMain {
                 //Dir path is outside directory, "dir" is all the directory inside the parent directory and inputIndFile,outputModeFile is the structure inside "dir" like "/castor-input/inds.txt"
                 inputIndFile = dirPath + dir + inputIndFile;
                 outputModeFile = dirPath + dir + outputModeFile;
-				/* For immortal dataset update the stored prodedure name wrt queries
+                /* For immortal dataset update the stored prodedure name wrt queries
                 String [] query  = dir.split("_");
 				target = query[1]+"_all";
 				storedProcedure = "CastorProcedure_"+query[1]+"_all";
@@ -130,12 +130,12 @@ public class AutoModeMain {
             logger.debug("Inside approx");
             autoMode = new AutoModeApprox();
         }
-        autoMode.generateMode(threshold, thresholdType, target, storedProcedure, dbUrl, inputIndFile,  outputModeFile, outputIndFile);
+        autoMode.generateMode(threshold, thresholdType, target, storedProcedure, dbUrl, inputIndFile, outputModeFile, outputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
     }
 
 
-    public void generateMode(int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile,  String outputModeFile, String outputIndFile) { }
+    public void generateMode(int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile) { }
 
     public void generatePredicate(Map<String, List<String>> rel, String type, int threshold, String thresholdType, List<String> modes, String headMode, Set<String> headModeSet) {
         formRelationsSet(rel, threshold, thresholdType, headMode);
@@ -181,7 +181,7 @@ public class AutoModeMain {
         } else {
             boolean constant = false;
             if (vQuery.isConstantColumn(table, col, threshold, thresholdType, dbUrl)) {
-                logger.debug("Constant Column :: "+table+Constants.Regex.PERIOD.getValue()+col);
+                logger.debug("Constant Column :: " + table + Constants.Regex.PERIOD.getValue() + col);
                 constant = true;
             }
             for (String str : vertexType) {
@@ -288,11 +288,11 @@ public class AutoModeMain {
         relations.keySet().removeIf(e -> (!indRelations.contains(e)));
     }
 
-    public void extractRelationsFromInds(String uNode, String vNode, Set<String> relations){
-        uNode = uNode.substring(1, uNode.length()-1);
-        vNode = vNode.substring(1, vNode.length()-1);
+    public void extractRelationsFromInds(String uNode, String vNode, Set<String> relations) {
+        uNode = uNode.substring(1, uNode.length() - 1);
+        vNode = vNode.substring(1, vNode.length() - 1);
         String[] un = uNode.split(Pattern.quote(Constants.Regex.PERIOD.getValue()));
-        String [] vn = vNode.split(Pattern.quote(Constants.Regex.PERIOD.getValue()));
+        String[] vn = vNode.split(Pattern.quote(Constants.Regex.PERIOD.getValue()));
         relations.add(un[0]);
         relations.add(vn[0]);
     }
@@ -310,4 +310,88 @@ public class AutoModeMain {
             logger.debug(v);
         }
     }
+
+    public String optimiseHeadMode(Set<String> headModeSet) {
+        logger.debug("!!!! Fixing HeadMode !!!!");
+        List<Set> termsList = new ArrayList<>();
+        String targetRelation = null;
+
+        for (String str : headModeSet) {
+            String[] termsUnformatted = str.split(Constants.Regex.SPLITON_OPEN_PARENTHESIS.getValue());
+            if (targetRelation == null) {
+                targetRelation = termsUnformatted[0];
+            }
+            String terms = termsUnformatted[1].substring(0, termsUnformatted[1].indexOf(Constants.Regex.CLOSE_PARENTHESIS.getValue()));
+            String[] termsArray = terms.split(Constants.Regex.COMMA.getValue());
+            int index = 0;
+
+            for (String term : termsArray) {
+                if (termsList.size() != termsArray.length) {
+                    Set<String> set = new HashSet();
+                    set.add(term);
+                    termsList.add(set);
+                } else {
+                    Set<String> set = termsList.get(index);
+                    set.add(term);
+                }
+                index++;
+            }
+        }
+
+        Map<String, String> visitedTerms = new HashMap<>();
+        List<String> targetMode = new ArrayList<>();
+
+        for (Set<String> set : termsList) {
+            for (String term : set) {
+                String key = getSetItemsPartOfUpdatedMap(set, visitedTerms);
+                if (key != null) {
+                    targetMode.add(visitedTerms.get(key));
+                    updateMap(set, visitedTerms.get(key), visitedTerms);
+                } else {
+                    targetMode.add(term);
+                    updateMap(set, term, visitedTerms);
+                }
+                break;
+            }
+        }
+
+        String targetTerms = String.join(Constants.Regex.COMMA.getValue(), targetMode);
+        return targetRelation + Constants.Regex.OPEN_PARENTHESIS.getValue() + targetTerms + Constants.Regex.CLOSE_PARENTHESIS.getValue();
+    }
+
+    public void updateMap(Set<String> set, String value, Map<String, String> map) {
+        for (String term : set) {
+            map.put(term, value);
+        }
+    }
+
+    public String getSetItemsPartOfUpdatedMap(Set<String> set, Map<String, String> map) {
+        if (map.isEmpty())
+            return null;
+        for (String term : set) {
+            if (map.containsKey(term))
+                return term;
+        }
+        return null;
+    }
+
+
+//    public String optimiseHeadMode(Set<String> headModeSet) {
+//        for (Vertex<String> vertex : graph.getAllVertexId()) {
+//            if (vertex.getName().startsWith(Constants.Regex.OPEN_PARENTHESIS.getValue() + headMode + Constants.Regex.PERIOD.getValue())) {
+//                Set<Map<String, Integer>> set = vertex.getVertexTypeMap();
+//                for (Map<String, Integer> map : set) {
+//                    for (Map.Entry<String, Integer> mapEntry : map.entrySet()) {
+//                        if (mapEntry.getValue() == 1 && vertex.getVertexType().size() > 1) {
+//                            logger.debug(vertex.getName() + " Headmode VertexType Before remvoal " + vertex.getVertexType());
+//                            vertex.getVertexType().remove(mapEntry.getKey());
+//                            logger.debug(vertex.getName() + " Headmode VertexType After remvoal " + vertex.getVertexType());
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return "";
+//    }
+
 }

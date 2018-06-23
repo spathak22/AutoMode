@@ -53,6 +53,7 @@ public class AutoModeApprox extends AutoModeMain {
                 headModeBody = str;
         } else {
             logger.error("!!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!");
+            headModeBody = optimiseHeadMode(headModeSet);
         }
 
         //Generate Outputs
@@ -238,20 +239,4 @@ public class AutoModeApprox extends AutoModeMain {
         return relations;
     }
 
-    private void optimiseHeadMode(String headMode, Graph<String> g) {
-        for (Vertex<String> vertex : graph.getAllVertexId()) {
-            if (vertex.getName().startsWith(Constants.Regex.OPEN_PARENTHESIS.getValue() + headMode + Constants.Regex.PERIOD.getValue())) {
-                Set<Map<String, Integer>> set = vertex.getVertexTypeMap();
-                for (Map<String, Integer> map : set) {
-                    for (Map.Entry<String, Integer> mapEntry : map.entrySet()) {
-                        if (mapEntry.getValue() == 1 && vertex.getVertexType().size() > 1) {
-                            logger.debug(vertex.getName() + " Headmode VertexType Before remvoal " + vertex.getVertexType());
-                            vertex.getVertexType().remove(mapEntry.getKey());
-                            logger.debug(vertex.getName() + " Headmode VertexType After remvoal " + vertex.getVertexType());
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

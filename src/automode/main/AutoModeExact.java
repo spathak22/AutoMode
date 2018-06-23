@@ -50,6 +50,7 @@ public class AutoModeExact extends AutoModeMain {
 				headModeBody = str;
 		}else{
 			logger.error("!!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!");
+			headModeBody = optimiseHeadMode(headModeSet);
 		}
 
 		//Generate Outputs
