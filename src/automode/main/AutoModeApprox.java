@@ -20,7 +20,7 @@ public class AutoModeApprox extends AutoModeMain {
     @Override
     public void generateMode(int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile,  String outputModeFile, String outputIndFile) {
         logger.debug("------------------ Generating Approx Mode  -----------------------");
-        String inds = FileUtil.readFile(inputIndFile);
+        String inds = FileUtil.readFile(inputIndFile).toLowerCase();
         List<String> modes = new ArrayList<>();
         Set<String> headModeSet = new HashSet<>();
 
