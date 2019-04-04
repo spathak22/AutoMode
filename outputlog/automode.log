@@ -1,192 +1,650 @@
-2018-01-23 08:05:59 DEBUG AutoModeMain:95 - Inside run exact is true, approx is false
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - Inside run target is advisedby, sp is UWCSEProcedure
-2018-01-23 08:05:59 DEBUG AutoModeMain:126 - Inside exact
-2018-01-23 08:05:59 DEBUG AutoModeMain:23 - ------------------ Generating Exact Mode  -----------------------
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(hasposition.professor)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (hasposition.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (professor.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (professor.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (hasposition.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(yearsinprogram.student)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (yearsinprogram.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (inphase.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (inphase.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (yearsinprogram.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(advisedby.student)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (advisedby.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (inphase.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (inphase.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (student.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (student.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (yearsinprogram.student) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (yearsinprogram.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (advisedby.student) has Vertex Type  [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(taughtby.term)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.term) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.term) has Vertex Type  [T12]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(ta.term)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (ta.term) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.term) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.term) has Vertex Type  [T12]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (ta.term) has Vertex Type  [T12]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(taughtby.course)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.course) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (courselevel.course) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (courselevel.course) has Vertex Type  [T2]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.course) has Vertex Type  [T2]
-2018-01-23 08:05:59 DEBUG AutoModeMain:66 - 
-  --------Assigning Type to  --------(advisedby.advisor)
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (advisedby.advisor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (hasposition.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (hasposition.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (professor.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (professor.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:77 - (taughtby.professor) >> 
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (taughtby.professor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:96 - (advisedby.advisor) has Vertex Type  [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:308 - --------------- Printing Cycles ----------------
-2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T4, T6, T5]
-2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T10, T8, T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:310 - [T1, T2]
-2018-01-23 08:05:59 DEBUG AutoModeMain:301 - 
- -----------------Vertex type -------------------------
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T4 (hasposition.professor) Type [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T5 (professor.professor) Type [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T6 (taughtby.professor) Type [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T10 (yearsinprogram.student) Type [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T7 (advisedby.student) Type [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T8 (inphase.student) Type [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T12 (taughtby.term) Type [T12]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T9 (student.student) Type [T9]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T11 (ta.term) Type [T12]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T1 (taughtby.course) Type [T2]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T2 (courselevel.course) Type [T2]
-2018-01-23 08:05:59 DEBUG AutoModeMain:303 - T3 (advisedby.advisor) Type [T6]
-2018-01-23 08:05:59 DEBUG AutoModeMain:42 - Relations Size :: 9
-2018-01-23 08:05:59 DEBUG AutoModeMain:147 - Relations Size :: 9
-2018-01-23 08:05:59 DEBUG VoltDBQuery:70 - Connected to VoltDB node at: %s.
-localhost:21212
-2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: inphase.phase
-2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: hasposition.pos
-2018-01-23 08:06:00 DEBUG AutoModeMain:184 - Constant Column :: courselevel.level
-2018-01-23 08:06:00 DEBUG VoltDBQuery:83 - Closing Voltdb connection
-2018-01-23 08:06:00 DEBUG AutoModeMain:203 - 
- ----------------  Predicates Exact ------------------------
-2018-01-23 08:06:00 DEBUG AutoModeMain:226 - HEADMODE :: advisedby(+T9,+T6)
-2018-01-23 08:06:00 DEBUG AutoModeMain:215 - professor(+T6)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(+T2,#T18)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(+T2,-T18)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - courselevel(-T2,+T18)
-2018-01-23 08:06:00 DEBUG AutoModeMain:215 - student(+T9)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - yearsinprogram(+T9,-T15)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - yearsinprogram(-T9,+T15)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(+T9,#T13)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(+T9,-T13)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - inphase(-T9,+T13)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(+T2,-T6,-T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(-T2,+T6,-T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - taughtby(-T2,-T6,+T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(-T16,-T17,+T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(-T16,+T17,-T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - ta(+T16,-T17,-T12)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(+T6,#T14)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(+T6,-T14)
-2018-01-23 08:06:00 DEBUG AutoModeMain:229 - hasposition(-T6,+T14)
-2018-01-23 08:06:00 DEBUG AutoModeMain:48 - ------------------ HeadMode formed correctly  size is 1 -----------------------
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.professor) has Vertex Type  [T4] and vertex Id = T9
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (professor.professor) has Vertex Type  [T4] and vertex Id = T8
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.professor) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.professor) has Vertex Type  [T4] and vertex Id = T9
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (hasposition.professor) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (hasposition.professor) has Vertex Type  [T4] and vertex Id = T10
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (advisedby.advisor) has Vertex Type  [T4] and vertex Id = T7
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
- --------Assigning Type to  --------(taughtby.course)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
- --------Assigning Type to  --------(courselevel.course)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (courselevel.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (courselevel.course) has Vertex Type  [T12] and vertex Id = T11
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+2019-04-04 01:09:20 DEBUG AutoModePerQueryClient:52 - Inside algorithms
+2019-04-04 01:09:21 INFO  AutoModePerQuery:41 - Reading Inds file...
+2019-04-04 01:16:38 DEBUG AutoModeSetupClient:67 - Inside algorithms
+2019-04-04 01:16:38 DEBUG AutoModeSetupClient:89 - Inside run algorithm is : approximate
+2019-04-04 01:16:38 DEBUG AutoModeSetupClient:90 - Inside run target is : null, sp is null
+2019-04-04 01:16:38 DEBUG AutoModeSetupClient:128 - Inside approximate
+2019-04-04 01:16:38 DEBUG AutoModeImpl:18 - ------------------ Generating Approx Mode  -----------------------
+2019-04-04 01:16:38 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T1
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T6
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (hasposition.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (professor.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (professor.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T9
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (ta.term) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (taughtby.term) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T7
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (courselevel.course) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:96 - (taughtby.course) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (inphase.student)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (taughtby.course)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (taughtby.professor) > (hasposition.professor)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (taughtby.professor) > (professor.professor)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (yearsinprogram.student)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (hasposition.professor) > (professor.professor)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:66 - Removing Edge (inphase.student) > (yearsinprogram.student)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(hasposition.professor)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (taughtby.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (taughtby.professor) has Vertex Type  [T6] and vertex Id = T6
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T6] and vertex Id = T4
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(professor.professor)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T6] and vertex Id = T4
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (taughtby.professor) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (taughtby.professor) has Vertex Type  [T6] and vertex Id = T6
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T6] and vertex Id = T5
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
  --------Assigning Type to  --------(taughtby.term)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.term) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.term) has Vertex Type  [T14] and vertex Id = T14
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
- --------Assigning Type to  --------(ta.course)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (courselevel.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (courselevel.course) has Vertex Type  [T12] and vertex Id = T11
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.course) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.course) has Vertex Type  [T12] and vertex Id = T12
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.course) has Vertex Type  [T12] and vertex Id = T13
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (taughtby.term) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (taughtby.term) has Vertex Type  [T10] and vertex Id = T10
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(courselevel.course)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T7] and vertex Id = T7
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.course)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T7] and vertex Id = T7
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T7] and vertex Id = T8
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
  --------Assigning Type to  --------(ta.term)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.term) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (taughtby.term) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (taughtby.term) has Vertex Type  [T14] and vertex Id = T14
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.term) has Vertex Type  [T14] and vertex Id = T15
-2018-01-23 08:21:12 DEBUG AutoModeMain:149 - 
- --------Assigning Type to  --------(advisedby.student)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (advisedby.student) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (yearsinprogram.student) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (yearsinprogram.student) has Vertex Type  [T2] and vertex Id = T2
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (student.student) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (student.student) has Vertex Type  [T2] and vertex Id = T3
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (publication.author) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (publication.author) has Vertex Type  [T2] and vertex Id = T4
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (publication.author)
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (inphase.student) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (inphase.student) has Vertex Type  [T2] and vertex Id = T5
-2018-01-23 08:21:12 DEBUG AutoModeMain:159 - (ta.student) >> 
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (ta.student) has Vertex Type  [T2] and vertex Id = T6
-2018-01-23 08:21:12 DEBUG AutoModeMain:223 -  *** Added original type to (ta.student)
-2018-01-23 08:21:12 DEBUG AutoModeMain:179 - (advisedby.student) has Vertex Type  [T4, T6, T2] and vertex Id = T1
-2018-01-23 08:21:12 DEBUG AutoModeMain:307 - --------------- Printing Cycles ----------------
-2018-01-23 08:21:12 DEBUG AutoModeMain:300 - 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (ta.term) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (taughtby.term) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (taughtby.term) has Vertex Type  [T10] and vertex Id = T10
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (ta.term) has Vertex Type  [T10] and vertex Id = T9
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(student.student)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:16:38 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(yearsinprogram.student)
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:16:38 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:16:38 DEBUG AutoModeImpl:292 - --------------- Printing Cycles ----------------
+2019-04-04 01:16:38 DEBUG AutoModeImpl:282 - 
  -----------------Vertex type -------------------------
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T4 (publication.author) Type [T2]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T5 (inphase.student) Type [T2]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T6 (ta.student) Type [T2]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T7 (advisedby.advisor) Type [T4]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T8 (professor.professor) Type [T4]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T9 (taughtby.professor) Type [T4]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T10 (hasposition.professor) Type [T4]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T12 (taughtby.course) Type [T12]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T11 (courselevel.course) Type [T12]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T14 (taughtby.term) Type [T14]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T13 (ta.course) Type [T12]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T15 (ta.term) Type [T14]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T1 (advisedby.student) Type [T4, T6, T2]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T2 (yearsinprogram.student) Type [T2]
-2018-01-23 08:21:12 DEBUG AutoModeMain:302 - T3 (student.student) Type [T2]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T4 (hasposition.professor) Type [T6]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T5 (professor.professor) Type [T6]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T6 (taughtby.professor) Type [T6]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T10 (taughtby.term) Type [T10]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T7 (courselevel.course) Type [T7]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T8 (taughtby.course) Type [T7]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T9 (ta.term) Type [T10]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T1 (student.student) Type [T1]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T2 (yearsinprogram.student) Type [T1]
+2019-04-04 01:16:38 DEBUG AutoModeImpl:284 - T3 (inphase.student) Type [T1]
+2019-04-04 01:18:43 DEBUG AutoModeSetupClient:67 - Inside algorithms
+2019-04-04 01:18:43 DEBUG AutoModeSetupClient:89 - Inside run algorithm is : approximate
+2019-04-04 01:18:43 DEBUG AutoModeSetupClient:90 - Inside run target is : null, sp is null
+2019-04-04 01:18:43 DEBUG AutoModeSetupClient:128 - Inside approximate
+2019-04-04 01:18:43 DEBUG AutoModeImpl:18 - ------------------ Generating Approx Mode  -----------------------
+2019-04-04 01:18:43 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T1
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T6
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (professor.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (hasposition.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T12
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (ta.term) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (taughtby.term) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T8
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (courselevel.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (taughtby.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T13
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (ta.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (taughtby.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (taughtby.professor)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (hasposition.professor)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (hasposition.professor) > (taughtby.professor)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (yearsinprogram.student)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (inphase.student)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (ta.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:61 - Removing Edge (taughtby.term) > (ta.term)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (taughtby.course) > (ta.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:66 - Removing Edge (inphase.student) > (yearsinprogram.student)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(hasposition.professor)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:18:43 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:18:43 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.professor)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (taughtby.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:18:43 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (taughtby.professor) has Vertex Type  [T5] and vertex Id = T7
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(courselevel.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.course)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (ta.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (ta.course) has Vertex Type  [T8] and vertex Id = T10
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.term)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (ta.term) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (taughtby.term) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (taughtby.term) has Vertex Type  [T11] and vertex Id = T11
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (ta.term) has Vertex Type  [T11] and vertex Id = T12
+2019-04-04 01:18:43 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.student)
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (ta.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:18:43 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:18:43 DEBUG AutoModeImpl:168 - (ta.student) has Vertex Type  [T1] and vertex Id = T13
+2019-04-04 01:18:43 DEBUG AutoModeImpl:292 - --------------- Printing Cycles ----------------
+2019-04-04 01:18:43 DEBUG AutoModeImpl:282 - 
+ -----------------Vertex type -------------------------
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T4 (hasposition.professor) Type [T5]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T5 (publication.author) Type [T1]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T6 (professor.professor) Type [T5]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T7 (taughtby.professor) Type [T5]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T8 (courselevel.course) Type [T8]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T9 (taughtby.course) Type [T8]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T10 (ta.course) Type [T8]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T12 (ta.term) Type [T11]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T11 (taughtby.term) Type [T11]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T13 (ta.student) Type [T1]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T1 (student.student) Type [T1]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T2 (yearsinprogram.student) Type [T1]
+2019-04-04 01:18:43 DEBUG AutoModeImpl:284 - T3 (inphase.student) Type [T1]
+2019-04-04 01:18:44 WARN  DBBPOOL:125 - Strict java memory checking is enabled, don't do release builds or performance runs with this enabled. Invoke "ant clean" and "ant -Djmemcheck=NO_MEMCHECK" to disable.
+2019-04-04 01:18:44 DEBUG AutoModeImpl:41 - Relations Size :: 9
+2019-04-04 01:18:44 DEBUG AutoModeImpl:50 - Relations Size :: 9
+2019-04-04 01:18:44 DEBUG VoltDBQuery:69 - Connected to VoltDB node at: %s.
+localhost:21212
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: courselevel.level
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: yearsinprogram.years
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: publication.author
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: inphase.phase
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: taughtby.term
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: ta.term
+2019-04-04 01:18:44 DEBUG AutoModeImpl:92 - Constant Column :: hasposition.pos
+2019-04-04 01:18:44 DEBUG VoltDBQuery:85 - Closing Voltdb connection
+2019-04-04 01:18:44 DEBUG AutoModeImpl:113 - 
+ ----------------  Predicates Approx ------------------------
+2019-04-04 01:18:44 DEBUG AutoModeImpl:128 - professor(+T5)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - courselevel(-T8,+T14)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - courselevel(+T8,#T14)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - courselevel(+T8,-T14)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:128 - student(+T1)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - yearsinprogram(+T1,#T15)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - yearsinprogram(+T1,-T15)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - yearsinprogram(-T1,+T15)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(-T16,+T1)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(-T16,+T5)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(+T16,#T1)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(+T16,#T5)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(+T16,-T1)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - publication(+T16,-T5)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - inphase(+T1,#T17)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - inphase(+T1,-T17)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - inphase(-T1,+T17)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - taughtby(-T8,+T5,#T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - taughtby(-T8,+T5,-T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - taughtby(-T8,-T5,+T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - taughtby(+T8,-T5,#T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - taughtby(+T8,-T5,-T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - ta(-T8,+T1,#T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - ta(-T8,+T1,-T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - ta(-T8,-T1,+T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - ta(+T8,-T1,#T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - ta(+T8,-T1,-T11)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - hasposition(+T5,#T18)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - hasposition(+T5,-T18)
+2019-04-04 01:18:44 DEBUG AutoModeImpl:144 - hasposition(-T5,+T18)
+2019-04-04 01:18:44 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:18:44 DEBUG AutoModeSetupClient:144 - -------- Finished setting up Automode ---------
+2019-04-04 01:24:23 DEBUG AutoModeSetupClient:67 - Inside algorithms
+2019-04-04 01:24:23 DEBUG AutoModeSetupClient:89 - Inside run algorithm is : approximate
+2019-04-04 01:24:23 DEBUG AutoModeSetupClient:90 - Inside run target is : null, sp is null
+2019-04-04 01:24:23 DEBUG AutoModeSetupClient:128 - Inside approximate
+2019-04-04 01:24:23 DEBUG AutoModeImpl:18 - ------------------ Generating Approx Mode  -----------------------
+2019-04-04 01:24:23 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T1
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T6
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (professor.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (hasposition.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T12
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (ta.term) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (taughtby.term) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T8
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (courselevel.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (taughtby.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T13
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (ta.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (taughtby.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (taughtby.professor)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (hasposition.professor)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (hasposition.professor) > (taughtby.professor)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (yearsinprogram.student)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (inphase.student)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (ta.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:61 - Removing Edge (taughtby.term) > (ta.term)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (taughtby.course) > (ta.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:66 - Removing Edge (inphase.student) > (yearsinprogram.student)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(hasposition.professor)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:24:23 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:24:23 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.professor)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (taughtby.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:24:23 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (taughtby.professor) has Vertex Type  [T5] and vertex Id = T7
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(courselevel.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.course)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (ta.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (ta.course) has Vertex Type  [T8] and vertex Id = T10
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.term)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (ta.term) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (taughtby.term) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (taughtby.term) has Vertex Type  [T11] and vertex Id = T11
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (ta.term) has Vertex Type  [T11] and vertex Id = T12
+2019-04-04 01:24:23 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.student)
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (ta.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:24:23 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:24:23 DEBUG AutoModeImpl:168 - (ta.student) has Vertex Type  [T1] and vertex Id = T13
+2019-04-04 01:24:23 DEBUG AutoModeImpl:292 - --------------- Printing Cycles ----------------
+2019-04-04 01:24:23 DEBUG AutoModeImpl:282 - 
+ -----------------Vertex type -------------------------
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T4 (hasposition.professor) Type [T5]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T5 (publication.author) Type [T1]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T6 (professor.professor) Type [T5]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T7 (taughtby.professor) Type [T5]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T8 (courselevel.course) Type [T8]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T9 (taughtby.course) Type [T8]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T10 (ta.course) Type [T8]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T12 (ta.term) Type [T11]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T11 (taughtby.term) Type [T11]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T13 (ta.student) Type [T1]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T1 (student.student) Type [T1]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T2 (yearsinprogram.student) Type [T1]
+2019-04-04 01:24:23 DEBUG AutoModeImpl:284 - T3 (inphase.student) Type [T1]
+2019-04-04 01:24:24 WARN  DBBPOOL:125 - Strict java memory checking is enabled, don't do release builds or performance runs with this enabled. Invoke "ant clean" and "ant -Djmemcheck=NO_MEMCHECK" to disable.
+2019-04-04 01:24:24 DEBUG AutoModeImpl:41 - Relations Size :: 9
+2019-04-04 01:24:24 DEBUG AutoModeImpl:50 - Relations Size :: 9
+2019-04-04 01:24:24 DEBUG VoltDBQuery:69 - Connected to VoltDB node at: %s.
+localhost:21212
+2019-04-04 01:24:24 DEBUG AutoModeImpl:92 - Constant Column :: courselevel.level
+2019-04-04 01:24:24 DEBUG AutoModeImpl:92 - Constant Column :: inphase.phase
+2019-04-04 01:24:24 DEBUG AutoModeImpl:92 - Constant Column :: hasposition.pos
+2019-04-04 01:24:24 DEBUG VoltDBQuery:85 - Closing Voltdb connection
+2019-04-04 01:24:24 DEBUG AutoModeImpl:113 - 
+ ----------------  Predicates Approx ------------------------
+2019-04-04 01:24:24 DEBUG AutoModeImpl:128 - professor(+T5)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - courselevel(-T8,+T14)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - courselevel(+T8,#T14)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - courselevel(+T8,-T14)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:128 - student(+T1)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - yearsinprogram(+T1,-T15)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - yearsinprogram(-T1,+T15)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - publication(-T16,+T1)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - publication(-T16,+T5)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - publication(+T16,-T1)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - publication(+T16,-T5)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - inphase(+T1,#T17)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - inphase(+T1,-T17)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - inphase(-T1,+T17)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - taughtby(-T8,+T5,-T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - taughtby(-T8,-T5,+T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - taughtby(+T8,-T5,-T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - ta(-T8,+T1,-T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - ta(-T8,-T1,+T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - ta(+T8,-T1,-T11)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - hasposition(+T5,#T18)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - hasposition(+T5,-T18)
+2019-04-04 01:24:24 DEBUG AutoModeImpl:144 - hasposition(-T5,+T18)
+2019-04-04 01:24:24 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:24:24 DEBUG AutoModeSetupClient:144 - -------- Finished setting up Automode ---------
+2019-04-04 01:25:33 DEBUG AutoModePerQueryClient:52 - Inside algorithms
+2019-04-04 01:25:33 INFO  AutoModeImpl:39 - Reading Transformation file...
+2019-04-04 01:25:33 DEBUG AutoModeImpl:139 - HEADMODE :: advisedby(+T1,+T5)
+2019-04-04 01:25:33 DEBUG AutoModeImpl:58 - ------------------ HeadMode formed correctly  size is 1 -----------------------
+2019-04-04 01:25:33 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:26:14 DEBUG AutoModePerQueryClient:52 - Inside algorithms
+2019-04-04 01:26:14 INFO  AutoModePerQuery:41 - Reading Inds file...
+2019-04-04 01:26:14 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T1,+T5)
+2019-04-04 01:26:14 DEBUG AutoModePerQuery:60 - ------------------ HeadMode formed correctly  size is 1 -----------------------
+2019-04-04 01:26:14 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:28:26 DEBUG AutoModePerQueryClient:52 - Inside algorithms
+2019-04-04 01:28:26 INFO  AutoModePerQuery:41 - Reading Inds file...
+2019-04-04 01:28:26 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T1,+T1)
+2019-04-04 01:28:26 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T1,+T5)
+2019-04-04 01:28:26 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T5,+T1)
+2019-04-04 01:28:26 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T5,+T5)
+2019-04-04 01:28:26 ERROR AutoModePerQuery:64 - !!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!
+2019-04-04 01:28:26 DEBUG AutoModeImpl:302 - !!!! Fixing HeadMode !!!!
+2019-04-04 01:28:26 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:42:08 DEBUG AutoModePerQueryClient:52 - Inside algorithms
+2019-04-04 01:42:08 INFO  AutoModePerQuery:41 - Reading Inds file...
+2019-04-04 01:42:08 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T1,+T1)
+2019-04-04 01:42:08 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T1,+T5)
+2019-04-04 01:42:08 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T5,+T1)
+2019-04-04 01:42:08 DEBUG AutoModePerQuery:142 - HEADMODE :: advisedby(+T5,+T5)
+2019-04-04 01:42:08 ERROR AutoModePerQuery:64 - !!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!
+2019-04-04 01:42:08 DEBUG AutoModeImpl:302 - !!!! Fixing HeadMode !!!!
+2019-04-04 01:42:09 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:42:27 DEBUG AutoModeSetupClient:67 - Inside algorithms
+2019-04-04 01:42:27 DEBUG AutoModeSetupClient:89 - Inside run algorithm is : approximate
+2019-04-04 01:42:27 DEBUG AutoModeSetupClient:90 - Inside run target is : null, sp is null
+2019-04-04 01:42:27 DEBUG AutoModeSetupClient:128 - Inside approximate
+2019-04-04 01:42:27 DEBUG AutoModeImpl:18 - ------------------ Generating Approx Mode  -----------------------
+2019-04-04 01:42:27 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T1
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T6
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (professor.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (hasposition.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (taughtby.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T12
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (ta.term) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (taughtby.term) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T8
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (courselevel.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (taughtby.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (ta.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:83 - 
+ --------Searching for edges to be deleted from graph --------T13
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (ta.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (yearsinprogram.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:96 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (taughtby.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (taughtby.professor)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (professor.professor) > (hasposition.professor)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (hasposition.professor) > (taughtby.professor)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (yearsinprogram.student)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (student.student) > (inphase.student)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (courselevel.course) > (ta.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:61 - Removing Edge (taughtby.term) > (ta.term)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (taughtby.course) > (ta.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:66 - Removing Edge (inphase.student) > (yearsinprogram.student)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(hasposition.professor)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:42:27 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:42:27 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.professor)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (taughtby.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (hasposition.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (hasposition.professor) has Vertex Type  [T5] and vertex Id = T4
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (publication.author) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (publication.author) has Vertex Type  [T1] and vertex Id = T5
+2019-04-04 01:42:27 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (professor.professor) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:215 -  *** Added original type to (publication.author)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (professor.professor) has Vertex Type  [T5] and vertex Id = T6
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (taughtby.professor) has Vertex Type  [T5] and vertex Id = T7
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(courselevel.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(taughtby.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.course)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (ta.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (courselevel.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (courselevel.course) has Vertex Type  [T8] and vertex Id = T8
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (taughtby.course) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (taughtby.course) has Vertex Type  [T8] and vertex Id = T9
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (ta.course) has Vertex Type  [T8] and vertex Id = T10
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.term)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (ta.term) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (taughtby.term) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (taughtby.term) has Vertex Type  [T11] and vertex Id = T11
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (ta.term) has Vertex Type  [T11] and vertex Id = T12
+2019-04-04 01:42:27 DEBUG AutoModeImpl:135 - 
+ --------Assigning Type to  --------(ta.student)
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (ta.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (student.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (student.student) has Vertex Type  [T1] and vertex Id = T1
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (yearsinprogram.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (yearsinprogram.student) has Vertex Type  [T1] and vertex Id = T2
+2019-04-04 01:42:27 DEBUG AutoModeImpl:148 - (inphase.student) >> 
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (inphase.student) has Vertex Type  [T1] and vertex Id = T3
+2019-04-04 01:42:27 DEBUG AutoModeImpl:168 - (ta.student) has Vertex Type  [T1] and vertex Id = T13
+2019-04-04 01:42:27 DEBUG AutoModeImpl:292 - --------------- Printing Cycles ----------------
+2019-04-04 01:42:27 DEBUG AutoModeImpl:282 - 
+ -----------------Vertex type -------------------------
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T4 (hasposition.professor) Type [T5]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T5 (publication.author) Type [T1]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T6 (professor.professor) Type [T5]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T7 (taughtby.professor) Type [T5]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T8 (courselevel.course) Type [T8]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T9 (taughtby.course) Type [T8]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T10 (ta.course) Type [T8]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T12 (ta.term) Type [T11]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T11 (taughtby.term) Type [T11]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T13 (ta.student) Type [T1]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T1 (student.student) Type [T1]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T2 (yearsinprogram.student) Type [T1]
+2019-04-04 01:42:27 DEBUG AutoModeImpl:284 - T3 (inphase.student) Type [T1]
+2019-04-04 01:42:28 WARN  DBBPOOL:125 - Strict java memory checking is enabled, don't do release builds or performance runs with this enabled. Invoke "ant clean" and "ant -Djmemcheck=NO_MEMCHECK" to disable.
+2019-04-04 01:42:28 DEBUG AutoModeImpl:41 - Relations Size :: 9
+2019-04-04 01:42:28 DEBUG AutoModeImpl:50 - Relations Size :: 9
+2019-04-04 01:42:28 DEBUG VoltDBQuery:69 - Connected to VoltDB node at: %s.
+localhost:21212
+2019-04-04 01:42:28 DEBUG AutoModeImpl:92 - Constant Column :: courselevel.level
+2019-04-04 01:42:28 DEBUG AutoModeImpl:92 - Constant Column :: inphase.phase
+2019-04-04 01:42:28 DEBUG AutoModeImpl:92 - Constant Column :: hasposition.pos
+2019-04-04 01:42:28 DEBUG VoltDBQuery:85 - Closing Voltdb connection
+2019-04-04 01:42:28 DEBUG AutoModeImpl:113 - 
+ ----------------  Predicates Approx ------------------------
+2019-04-04 01:42:28 DEBUG AutoModeImpl:128 - professor(+T5)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - courselevel(-T8,+T14)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - courselevel(+T8,#T14)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - courselevel(+T8,-T14)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:128 - student(+T1)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - yearsinprogram(+T1,-T15)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - yearsinprogram(-T1,+T15)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - publication(-T16,+T1)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - publication(-T16,+T5)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - publication(+T16,-T1)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - publication(+T16,-T5)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - inphase(+T1,#T17)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - inphase(+T1,-T17)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - inphase(-T1,+T17)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - taughtby(-T8,+T5,-T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - taughtby(-T8,-T5,+T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - taughtby(+T8,-T5,-T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - ta(-T8,+T1,-T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - ta(-T8,-T1,+T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - ta(+T8,-T1,-T11)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - hasposition(+T5,#T18)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - hasposition(+T5,-T18)
+2019-04-04 01:42:28 DEBUG AutoModeImpl:144 - hasposition(-T5,+T18)
+2019-04-04 01:42:28 DEBUG JsonUtil:78 -  ----------------  Json Output ------------------------
+2019-04-04 01:42:28 DEBUG AutoModeSetupClient:144 - -------- Finished setting up Automode ---------

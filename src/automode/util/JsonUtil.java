@@ -13,9 +13,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.apache.log4j.Logger;
 
 
 public class JsonUtil {
+
+	final static Logger logger = Logger.getLogger(JsonUtil.class);
 
 	public static void writeIndsToJsonFormat(String ind, Map<String, List<String>> r, String filePath, String headMode){
 		JsonObject jobParent = new JsonObject();
@@ -48,8 +51,8 @@ public class JsonUtil {
 		}
 		jobParent.add("inds", jsonArray);
 		try{ 
-			FileWriter file = new FileWriter(filePath); 
-			System.out.println(" ----------------  Json Output ------------------------");
+			FileWriter file = new FileWriter(filePath);
+			logger.debug(" ----------------  Json Output ------------------------");
 			file.write(gson.toJson(jobParent));
 			file.flush();
 			file.close();
@@ -71,8 +74,8 @@ public class JsonUtil {
     	job.add(Constants.Modes.BODY_MODES.getValue(), je2);
     	job.add(Constants.Modes.SP_NAME.getValue(), je3);
         try{ 
-        	FileWriter file = new FileWriter(filePath); 
-        	System.out.println(" ----------------  Json Output ------------------------");
+        	FileWriter file = new FileWriter(filePath);
+			logger.debug(" ----------------  Json Output ------------------------");
         	file.write(gson.toJson(job));
             file.flush();
         } catch (IOException e) {

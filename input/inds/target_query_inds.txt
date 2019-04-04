@@ -1,0 +1,9 @@
+(advisedby.student) < (student.student) < 0.0
+(advisedby.student) < (publication.author) < 0.5
+(advisedby.student) < (yearsinprogram.student) < 0.0
+(advisedby.student) < (ta.student) < 0.4833333333333333
+(advisedby.student) < (inphase.student) < 0.0
+(advisedby.advisor) < (hasposition.professor) < 0.0
+(advisedby.advisor) < (publication.author) < 0.13043478260869568
+(advisedby.advisor) < (professor.professor) < 0.0
+(advisedby.advisor) < (taughtby.professor) < 0.0

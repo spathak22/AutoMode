@@ -3,82 +3,92 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="main" name="AutoMode">
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="main" name="AutoMode">
     <description>
-            		Build Automode and create JAR file.
+        Build Automode and create JAR file.
     </description>
-              	
-                <property name="projectName" value="Automode" />
-            	<property name="src.dir" location="src" />
-            	<property name="build.dir" location="bin" />
-            	<property name="dist.dir" location="dist" />
-            	<property name="dist.lib.dir" location="dist/lib" />
-            	<property name="lib.dir" value="lib" />
-            	<property name="res.dir" value="res" />
-            	<property name="sps.dir" value="sps" />
-            	<property name="dist.res.dir" value="dist/res" />
-            	<property name="main-class" value="automode.main.AutoModeMain" />
-            	<target name="init">
-            		<mkdir dir="${build.dir}" />
-            	</target>
-              	
+
+    <property name="projectName" value="Automode"/>
+    <property name="src.dir" location="src"/>
+    <property name="build.dir" location="bin"/>
+    <property name="dist.dir" location="dist"/>
+    <property name="dist.lib.dir" location="dist/lib"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="resources.dir" value="resources"/>
+    <property name="sps.dir" value="sps"/>
+    <property name="dist.resources.dir" value="dist/resources"/>
+    <property name="main-class" value="automode.algorithms.AutoModeImpl"/>
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
     <path id="classpath">
-        <pathelement location="bin"/>
-        <pathelement location="lib/gson-2.7.jar"/>
-        <pathelement location="lib/SchemaExtractor.jar"/>
-        <pathelement location="lib/voltdb-6.9.jar"/>
-        <pathelement location="lib/log4j-1.2.16.jar"/>
-        <pathelement location="lib/args4j-2.33.jar"/>
+        <path id="classpath">
+            <fileset dir="${basedir}/">
+                <include name="${lib.dir}/*.jar" />
+                <include name="${resources.dir}/*" />
+                <exclude name="${lib.dir}/*sources.jar"/>
+                <exclude name="${lib.dir}/*javadoc.jar"/>
+            </fileset>
+        </path>
     </path>
 
-   	
-            	<!-- To work with external libraries, need classpath to compile -->
-            	<target name="compile" depends="init" description="compile the source ">
-            		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" />
-            	</target>
 
-            	<!-- constructs the external libraries classpath name -->
-            	<pathconvert property="classpath.name" pathsep=" ">
-            		<path refid="classpath" />
-            		<mapper>
-            			<chainedmapper>
-            				<flattenmapper />
-            				<globmapper from="*" to="lib/*" />
-            			</chainedmapper>
-            		</mapper>
-            	</pathconvert>
-            	
-            	<target name="copy-dependencies">
-            		<copy todir="${dist.lib.dir}">
-            			<fileset dir="${lib.dir}" includes="**/*.jar" excludes="**/*sources.jar, **/*javadoc.jar" />
-            		</copy>
-            	</target>
-            	
-            	<!-- jar it, and declares the ext libraries in manifest.mf file -->
-            	<target name="jar" depends="compile, copy-dependencies" description="package, output to JAR">
-            	
-            		<echo message="classpath.name : ${classpath.name} " />
-            	
-            		<mkdir dir="${dist.dir}" />
-            		<mkdir dir="${dist.lib.dir}" />
+    <!-- To work with external libraries, need classpath to compile -->
+    <target name="compile" depends="init" description="compile the source ">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath"
+               debug="true"/>
+    </target>
 
-            		<jar jarfile="${dist.dir}/${projectName}.jar" basedir="${build.dir}">
-            			<manifest>
-            				<attribute name="Main-Class" value="${main-class}" />
-            				<attribute name="Class-Path" value=". ${classpath.name}" />
-            			</manifest>
-            			<fileset dir="." includes="${res.dir}/*.stg" />
-            			<fileset dir="." includes="*.properties" />
-            		</jar>
-            	</target>
-              	
-            	<target name="clean" description="clean up">
-            		<delete dir="${build.dir}" />
-            		<delete dir="${dist.dir}" />
-            		<delete dir="${sps.dir}" />
-            	</target>
-            		
-            		
-            	<!-- Default, run this -->
-            	<target name="main" depends="clean, compile, jar" />              	
+    <!-- constructs the external libraries classpath name -->
+    <pathconvert property="classpath.name" pathsep=" ">
+        <path refid="classpath"/>
+        <mapper>
+            <chainedmapper>
+                <flattenmapper/>
+                <globmapper from="*" to="lib/*"/>
+            </chainedmapper>
+        </mapper>
+    </pathconvert>
+
+    <target name="copy-dependencies">
+        <copy todir="${dist.lib.dir}">
+            <fileset dir="${lib.dir}" includes="**/*.jar" excludes="**/*sources.jar, **/*javadoc.jar"/>
+        </copy>
+
+        <copy todir="${dist.dir}">
+            <fileset dir="${lib.dir}" includes="Castor.jar" excludes="**/*sources.jar, **/*javadoc.jar"/>
+        </copy>
+
+    </target>
+
+    <!-- jar it, and declares the ext libraries in manifest.mf file -->
+    <target name="jar" depends="compile, copy-dependencies" description="package, output to JAR">
+
+        <echo message="classpath.name : ${classpath.name} "/>
+
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${dist.lib.dir}"/>
+
+        <jar jarfile="${dist.dir}/${projectName}.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Class-Path" value=". ${classpath.name}"/>
+            </manifest>
+            <fileset dir="${resources.dir}" includes="*.properties"/>
+        </jar>
+
+
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${sps.dir}"/>
+    </target>
+
+
+    <!-- Default, run this -->
+    <target name="main" depends="clean, compile, jar"/>
 </project>
