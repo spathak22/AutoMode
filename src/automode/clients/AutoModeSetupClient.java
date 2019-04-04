@@ -7,6 +7,7 @@ import automode.helper.IndHelper;
 import automode.util.Commons;
 import automode.util.Constants;
 import automode.util.JsonUtil;
+import castor.language.*;
 import castor.settings.DataModel;
 import org.apache.log4j.Logger;
 import org.kohsuke.args4j.CmdLineException;
@@ -15,6 +16,12 @@ import org.kohsuke.args4j.Option;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class AutoModeSetupClient {
 
@@ -41,7 +48,7 @@ public class AutoModeSetupClient {
     public String dirPath = null;
 
     @Option(name = "-fileInput", usage = "Run on individual file in input", required = false)
-    public boolean fileInput = false;
+    public boolean fileInput = true;
 
     @Option(name = "-inputIndFile", usage = "Input IND file path", required = true)
     public String inputIndFile = null;
@@ -60,6 +67,9 @@ public class AutoModeSetupClient {
 
     @Option(name = "-thresholdType", usage = "Threshold type abs or pctg", required = true)
     public String thresholdType = null;
+
+    @Option(name = "-manualTunedConstants", usage = "File to read manual tuned constants", required = false)
+    public String manualTunedConstants = null;
 
     final static Logger logger = Logger.getLogger(AutoModeSetupClient.class);
 
@@ -133,6 +143,12 @@ public class AutoModeSetupClient {
         DataModel dataModel = autoMode.runModeBuilder(indHelper, threshold, thresholdType, target, storedProcedure, dbUrl, inputIndFile, outputModeFile, outputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
 
+        //If manualTunedModes is not null then remove the modes which has unwanted constants
+        logger.debug(" manualTunedConstants value : "+manualTunedConstants);
+        if(manualTunedConstants!=null){
+            dataModel.setModesB(this.manualTunedTheConstants(dataModel.getModesB(), manualTunedConstants, indHelper.getDbRelations()));
+        }
+
         //Write Modes and INDS Output files
         String headMode = null;
         if (target != null) {
@@ -144,4 +160,80 @@ public class AutoModeSetupClient {
         logger.debug("-------- Finished setting up Automode ---------");
     }
 
+
+    /**
+     * Remove modes having unwanted constants from modes body
+     */
+    public List<Mode> manualTunedTheConstants(List<Mode> modesB, String constantsPath, Map<String, List<String>> relations){
+        //Create data structure for input constantsDefinition file
+        Map<String, Set<Integer>> constantMap = new HashMap<>();
+        Stream<String> stream = null;
+        try {
+            logger.info("Reading Constants deffinition file...");
+            stream = Files.lines(Paths.get(constantsPath));
+            {
+                stream.filter(s -> !s.isEmpty()).forEach(constantsDef -> processConstants(constantsDef, constantMap, relations));
+            }
+        } catch (IOException e) {
+            logger.error("Error while processing Inds file");
+            e.printStackTrace();
+        }
+        stream.close();
+
+        //Loop through modes and check if it has unwanted constants
+        List<Mode> modesTuned = new ArrayList<>();
+
+        for(Mode mode: modesB){
+            boolean unwantedModeFlag = false;
+            String predicateName = mode.getPredicateName();
+            if(constantMap.containsKey(predicateName)) {
+                int argumentIndex = 0;
+                for (Argument argument : mode.getArguments()) {
+                    if(argument.getIdentifierType()== IdentifierType.CONSTANT){
+                        if(!constantMap.get(predicateName).contains(argumentIndex)){
+                            unwantedModeFlag = true;
+                            break;
+                        }
+                    }
+                    argumentIndex++;
+                }
+            }
+
+            if(!unwantedModeFlag)
+                modesTuned.add(mode);
+        }
+        return modesTuned;
+    }
+
+
+
+    /**
+     * Populate constants Map to store : Relation: {Attributeindex1, Attributeindex2}
+     */
+    public void processConstants(String constantDef, Map<String, Set<Integer>> constantsMap, Map<String, List<String>> relations) {
+        String formattedConstantDef = constantDef.trim().replaceAll("\\s", "");
+        String[] constantDefLine = formattedConstantDef.split(":");
+        String relation = constantDefLine[0];
+        String[] attributes = constantDefLine[1].split(Pattern.quote(Constants.Regex.COMMA.getValue()));
+        Set<Integer> attributesSet = new HashSet<>();
+        for(String atribute: attributes){
+            attributesSet.add(getAttributePositionInRelation(relations, relation, atribute));
+        }
+        constantsMap.put(relation,attributesSet);
+    }
+
+
+    /**
+     * Get position of an attribute in relation
+     */
+    public int getAttributePositionInRelation(Map<String, List<String>>  relations, String relation, String attribute) {
+        List<String> attributes = relations.get(relation);
+        int attributeIndex = -1;
+        for (int i = 0; i < attributes.size(); i++) {
+            if (attribute.equals(attributes.get(i))) {
+                return i;
+            }
+        }
+        return attributeIndex;
+    }
 }

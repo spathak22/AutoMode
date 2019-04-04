@@ -43,9 +43,6 @@ public class AutoModePerQueryClient {
     @Option(name = "-storedProcedure", usage = "Voltdb procedure", required = false)
     public String storedProcedure = null;
 
-    @Option(name = "-manualTunedConstants", usage = "File to read manual tuned constants", required = false)
-    public String manualTunedConstants = null;
-
     final static Logger logger = Logger.getLogger(AutoModePerQueryClient.class);
 
     public static void main(String[] args) {

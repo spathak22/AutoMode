@@ -6,7 +6,7 @@ outModeFilePath="$5"
 dbServerUrl="$6"
 constThresholdType="$7"
 constThresholdValue="$8"
-
+manualTunedConstants="$9"
 
 echo "-------- Extracting inclusion dependencies -------- "
 java -cp dist/Castor.jar  castor.profiling.ApproximateINDDiscovery -schema="$schema" -maxerror="$maxIndError" -outfile="$outIndFilePath"
