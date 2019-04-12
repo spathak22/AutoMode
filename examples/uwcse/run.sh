@@ -1,0 +1,20 @@
+algorithm="$1"
+maxIndError="$2"
+inputIndFilePath="$3"
+outModeFilePath="$4"
+constThresholdType="$5"
+constThresholdValue="$6"
+target="$7"
+storedProcedure="$8"
+dbServerUrl="$9"
+schema="$10"
+manualTunedConstants="$11"
+
+echo "-------- Setting up Automode ---------"
+echo "Extracting inclusion dependencies ... "
+java -cp ../../dist/Automode.jar  automode.profiling.ApproximateINDDiscovery -maxerror="$maxIndError" -outfile="$inputIndFilePath"
+
+echo "Running Automode for ... " "$target"
+java -cp ../../dist/Automode.jar automode.clients.AutoModeSetupClient -target="$target"  -storedProcedure="$storedProcedure"  -algorithm="$algorithm"  -inputIndFile="$inputIndFilePath" -outputModeFile="$outModeFilePath" -threshold="$constThresholdValue" -thresholdType="$constThresholdType"
+
+echo "-------- Finished setting up Automode -------- "

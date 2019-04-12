@@ -1,6 +1,7 @@
 package automode.algorithms;
 
 import automode.util.Constants;
+import castor.dataaccess.db.VoltDBGenericDAO;
 import castor.language.Mode;
 import castor.language.Relation;
 import castor.language.Schema;
@@ -29,9 +30,8 @@ public class AutoModePerQuery extends AutoModeApproximate {
      *   Fill the List<Set<String>>> with the type information found in headModeBody
      *   Now Run the mode deffinition generator on headModeMap
      */
-    public DataModel connectHeadToBodyModes(String target, String schemaJson, String modesJson, String indsText) {
+    public DataModel connectHeadToBodyModes(String target, Schema schema, String modesJson, String indsText) {
         //     String inds =  FileUtil.readFile(indsText).toLowerCase();
-        Schema schema = JsonSettingsReader.readSchema(FileUtils.convertFileToJSON(schemaJson));
         DataModel dataModel = JsonSettingsReader.readRelaxedDataModel(FileUtils.convertFileToJSON(modesJson));
         List<Set<String>> argumentList = new ArrayList<>();
         Set<String> visitedSet = new HashSet<>();

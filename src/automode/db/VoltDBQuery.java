@@ -1,18 +1,25 @@
 package automode.db;
 
 import automode.util.Constants;
+import castor.language.Relation;
+import castor.language.Schema;
 import org.apache.log4j.Logger;
 import org.voltdb.VoltTable;
 import org.voltdb.VoltType;
 import org.voltdb.client.Client;
 import org.voltdb.client.ClientConfig;
+import org.voltdb.client.ClientResponse;
 import org.voltdb.client.ProcCallException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VoltDBQuery {
 
     private Client client = null;
+    public static final String CATALOG_QUERY = "@SystemCatalog";
     final static Logger logger = Logger.getLogger(VoltDBQuery.class);
 
     public boolean isConstantColumn(String table, String col, int threshold, String thresholdType, String serverURL) {
@@ -89,5 +96,43 @@ public class VoltDBQuery {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public Schema getSchema(String server) {
+        Map<String, Relation> relations = new HashMap<String, Relation>();
+
+        try {
+            // Run query
+            Client client = connectToVoltDB(server);
+            ClientResponse response = client.callProcedure(CATALOG_QUERY, "COLUMNS");
+
+            VoltTable table = response.getResults()[0];
+
+            while (table.advanceRow()) {
+                String relationName = table.getString("TABLE_NAME").toUpperCase();
+                String attributeName = table.getString("COLUMN_NAME").toUpperCase();
+                int attributeOrdinalPosition = (int) table.getLong("ORDINAL_POSITION");
+
+                if (!relations.containsKey(relationName)) {
+                    relations.put(relationName, new Relation(relationName, new ArrayList<String>()));
+                }
+
+                // If list of attributes is not big enough, insert dummy attributes
+                if (relations.get(relationName).getAttributeNames().size() < attributeOrdinalPosition) {
+                    for (int i = relations.get(relationName).getAttributeNames()
+                            .size(); i < attributeOrdinalPosition; i++) {
+                        relations.get(relationName).getAttributeNames().add(null);
+                    }
+                }
+
+                // Insert attribute in correct position
+                relations.get(relationName).getAttributeNames().set(attributeOrdinalPosition - 1, attributeName);
+            }
+        } catch (IOException | ProcCallException e) {
+            throw new RuntimeException(e);
+        }
+
+        return new Schema(relations);
     }
 }

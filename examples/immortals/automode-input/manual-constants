@@ -1,0 +1,3 @@
+cot_event_position:tilex,tiley
+source:channel
+cot_event:cot_type,servertime

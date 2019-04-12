@@ -1,9 +1,14 @@
 package automode.clients;
 
 import automode.algorithms.AutoModePerQuery;
+import automode.db.VoltDBQuery;
 import automode.util.Commons;
+import automode.util.Constants;
 import automode.util.JsonUtil;
+import castor.language.Schema;
 import castor.settings.DataModel;
+import castor.settings.JsonSettingsReader;
+import castor.utils.FileUtils;
 import org.apache.log4j.Logger;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -42,6 +47,9 @@ public class AutoModePerQueryClient {
 
     @Option(name = "-storedProcedure", usage = "Voltdb procedure", required = false)
     public String storedProcedure = null;
+
+    @Option(name = "-dbUrl", usage = "URL of running db instance", required = false)
+    public String dbUrl = Constants.Voltdb.URL.getValue();
 
     final static Logger logger = Logger.getLogger(AutoModePerQueryClient.class);
 
@@ -94,8 +102,17 @@ public class AutoModePerQueryClient {
      * Call the mode generation algorithms
      */
     public void callAutoModeGenerators() {
+        Schema schemaObj = null;
+        if(schema==null){
+            VoltDBQuery vQuery = new VoltDBQuery();
+            schemaObj = vQuery.getSchema(dbUrl);
+        }
+        else{
+            schemaObj = JsonSettingsReader.readSchema(FileUtils.convertFileToJSON(schema));
+        }
+
         AutoModePerQuery autoMode = new AutoModePerQuery();
-        DataModel dataModel = autoMode.connectHeadToBodyModes(target, schema, inputModeFile, inputIndFile);
+        DataModel dataModel = autoMode.connectHeadToBodyModes(target, schemaObj, inputModeFile, inputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
 
         if(storedProcedure==null)
