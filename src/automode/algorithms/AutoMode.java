@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface AutoMode {
 
-    DataModel runModeBuilder(IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile);
+    DataModel runModeBuilder(String examplesFile, String examplesRelation, IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile);
 
     void runDFS(Vertex<String> vertex, HashSet<Vertex<String>> visited, HashSet<Vertex<String>> candidates, String headMode);
 

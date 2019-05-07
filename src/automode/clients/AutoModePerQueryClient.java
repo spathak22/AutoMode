@@ -9,6 +9,7 @@ import castor.language.Schema;
 import castor.settings.DataModel;
 import castor.settings.JsonSettingsReader;
 import castor.utils.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -23,9 +24,6 @@ public class AutoModePerQueryClient {
 
     @Option(name = "-inputIndFile", usage = "Input IND file path", required = true)
     public String inputIndFile = null;
-
-    @Option(name = "-schema", usage = "Input schema Json file", required = true)
-    public String schema = null;
 
     @Option(name = "-target", usage = "Target query to be learned", required = true)
     public String target = null;
@@ -51,6 +49,12 @@ public class AutoModePerQueryClient {
     @Option(name = "-dbUrl", usage = "URL of running db instance", required = false)
     public String dbUrl = Constants.Voltdb.URL.getValue();
 
+    @Option(name = "-examplesRelation", usage = "Examples Relation", required = false)
+    public String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
+
+    @Option(name = "-examplesFile", usage = "Files Relation", required = false)
+    public String examplesFile = Constants.Regex.EMPTY_STRING.getValue();
+
     final static Logger logger = Logger.getLogger(AutoModePerQueryClient.class);
 
     public static void main(String[] args) {
@@ -60,7 +64,7 @@ public class AutoModePerQueryClient {
     }
 
     /**
-     *  Parse the input arguments and call the mode generation flow
+     * Parse the input arguments and call the mode generation flow
      */
     public void runAutomode(String[] args) {
         // Parse the arguments
@@ -74,6 +78,11 @@ public class AutoModePerQueryClient {
         }
 
         if (fileInput) {
+            //Check if the exampleFile is in input
+            if (!examplesFile.isEmpty()) {
+                examplesRelation = FilenameUtils.getBaseName(new File(examplesFile).getName());
+                logger.debug("examplesRelation : " + examplesRelation);
+            }
             callAutoModeGenerators();
         } else if (dirInput) {
             File file = new File(dirPath);
@@ -89,9 +98,9 @@ public class AutoModePerQueryClient {
                 inputIndFile = dirPath + dir + inputIndFile;
                 outputModeFile = dirPath + dir + outputModeFile;
                 //For immortal dataset update the stored prodedure name wrt queries
-                String [] query  = dir.split("_");
-				target = query[1]+"_all";
-				storedProcedure = "CastorProcedure_"+query[1]+"_all";
+                String[] query = dir.split("_");
+                target = query[1] + "_all";
+                storedProcedure = "CastorProcedure_" + query[1] + "_all";
 
                 callAutoModeGenerators();
             }
@@ -103,19 +112,16 @@ public class AutoModePerQueryClient {
      */
     public void callAutoModeGenerators() {
         Schema schemaObj = null;
-        if(schema==null){
-            VoltDBQuery vQuery = new VoltDBQuery();
-            schemaObj = vQuery.getSchema(dbUrl);
-        }
-        else{
-            schemaObj = JsonSettingsReader.readSchema(FileUtils.convertFileToJSON(schema));
-        }
+        VoltDBQuery vQuery = new VoltDBQuery();
+        schemaObj = vQuery.getSchema(dbUrl);
+        //Obsolete reading schema from json
+        //schemaObj = JsonSettingsReader.readSchema(FileUtils.convertFileToJSON(schema));
 
         AutoModePerQuery autoMode = new AutoModePerQuery();
         DataModel dataModel = autoMode.connectHeadToBodyModes(target, schemaObj, inputModeFile, inputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
 
-        if(storedProcedure==null)
+        if (storedProcedure == null)
             storedProcedure = dataModel.getSpName();
         JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), dataModel.getModesBString(), storedProcedure, outputModeFile);
 //        if(outputIndFile!=null)

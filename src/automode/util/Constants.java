@@ -1,6 +1,8 @@
 package automode.util;
 
 public class Constants {
+    public static final String EXAMPLES_SUFFIX = "";//"_train_pos";
+
     public enum ModeType {
         INPUT("+"), OUTPUT("-"), CONSTANT("#");
         private String value;
@@ -29,7 +31,7 @@ public class Constants {
 
     public enum Regex {
         SPLITON_OPEN_PARENTHESIS("\\("), CLOSE_PARENTHESIS(")"), OPEN_PARENTHESIS("("), PARENTHESIS(") < ("), PERIOD("."), SUBSET("<"), SEMICOLON(";"),
-        COMMA(","), OPEN_BRACKET("["), CLOSE_BRACKET("]");
+        COMMA(","), OPEN_BRACKET("["), CLOSE_BRACKET("]"), EMPTY_STRING("");
         private String value;
 
         Regex(String value) {
@@ -42,7 +44,7 @@ public class Constants {
     }
 
     public enum Voltdb{
-        USERNAME("program"), PASSWORD("none"), URL("localhost:21212");
+        USERNAME("program"), PASSWORD("none"), URL("localhost"), PORT("21212");
         private String value;
 
         Voltdb(String value) {

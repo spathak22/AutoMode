@@ -3,6 +3,7 @@ package automode.algorithms;
 import automode.helper.IndHelper;
 import automode.util.Constants;
 import automode.util.FileUtil;
+import castor.dataaccess.file.CSVFileReader;
 import castor.settings.DataModel;
 import extractschema.main.ExtractVoltDBSchema;
 
@@ -14,7 +15,7 @@ public class AutoModeApproximate extends AutoModeImpl {
      *  Method to initialize mode generation
      */
     @Override
-    public DataModel runModeBuilder(IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile) {
+    public DataModel runModeBuilder(String examplesFile, String examplesRelation, IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile) {
         logger.debug("------------------ Generating Approx Mode  -----------------------");
         String inds = FileUtil.readFile(inputIndFile).toLowerCase();
 //        List<String> modes = new ArrayList<>();
@@ -28,7 +29,7 @@ public class AutoModeApproximate extends AutoModeImpl {
         this.removeHighEpsilonEdges(this.graph);
 
         //Find and Store all cycles
-        this.findCycles(this.graph, target);
+        this.findCycles(this.graph, examplesRelation);
         //am.optimiseHeadMode(headMode,am.graph);
         this.printCycle();
         this.printVertexType();
@@ -36,10 +37,14 @@ public class AutoModeApproximate extends AutoModeImpl {
         //Generate Body Mode
         ExtractVoltDBSchema schema = new ExtractVoltDBSchema();
         Map<String, List<String>> relations = schema.getRelationsMap(dbUrl);
+        //Add examplesRelation to relations for fileTypeInput
+        if(!(examplesFile.isEmpty()))
+            relations.put(examplesRelation,CSVFileReader.readCSVHeader(examplesFile));
+
         //This method will keep the only relations present in IND and will remove others
         removeUnwantedRelations(relations, indRelations);
         logger.debug("Relations Size :: " + relations.size());
-        DataModel dataModel = this.buildModes(relations, Constants.Types.APPROX_IND.getValue(), threshold, thresholdType, target, dbUrl, storedProcedure);
+        DataModel dataModel = this.buildModes(examplesRelation, relations, Constants.Types.APPROX_IND.getValue(), threshold, thresholdType, target, dbUrl, storedProcedure);
         indHelper.setDbRelations(relations);
         indHelper.setInds(inds);
         return dataModel;

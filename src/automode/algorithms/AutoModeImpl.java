@@ -32,13 +32,13 @@ public abstract class AutoModeImpl implements AutoMode {
      * 1. Create relations
      * 2. Generate mode definitions
      */
-    public DataModel buildModes(Map<String, List<String>> rel, String type, int threshold, String thresholdType, String headMode, String dbUrl, String spName) {
+    public DataModel buildModes(String examplesRelation, Map<String, List<String>> rel, String type, int threshold, String thresholdType, String headMode, String dbUrl, String spName) {
 
         //1. Create Relation set consists of relations in format as : relation({+T1,+T2},{-T3,#T3})
-        Map<String, List<Set<String>>> relationSet = createRelationsTypeSet(rel, threshold, thresholdType, headMode, dbUrl);
+        Map<String, List<Set<String>>> relationSet = createRelationsTypeSet(rel, threshold, thresholdType, examplesRelation, dbUrl);
 
         //2. Generate mode definitions i.e. all possible combinations as : relation(+T1,-T3), relation(+T1,#T3).....
-        return generateModeDeffintion(relationSet, type, headMode, spName);
+        return generateModeDeffintion(examplesRelation, relationSet, type, headMode, spName);
     }
 
     /**
@@ -109,7 +109,7 @@ public abstract class AutoModeImpl implements AutoMode {
     /**
      * Method to generate Mode Definition recursively
      */
-    public DataModel generateModeDeffintion(Map<String, List<Set<String>>> relationSet, String type, String headMode, String spName) {
+    public DataModel generateModeDeffintion(String examplesRelation, Map<String, List<Set<String>>> relationSet, String type, String headMode, String spName) {
         logger.debug("\n ----------------  Predicates " + type + " ------------------------");
         Set<String> headModeSet = new HashSet<>();
         List<Mode> modes = new ArrayList<>();
@@ -121,7 +121,7 @@ public abstract class AutoModeImpl implements AutoMode {
             if (ret == null) {
                 Set ss = o[0];
                 for (Object s : ss) {
-                    if (k.equals(headMode)) {
+                    if (k.equalsIgnoreCase(examplesRelation)) {
                         logger.debug("HEADMODE :: " + k.toLowerCase() + "(" + s + ")");
                         headModeSet.add(s.toString());
                     } else {
@@ -132,11 +132,11 @@ public abstract class AutoModeImpl implements AutoMode {
                 }
             } else {
                 for (List<String> s : ret) {
-                    if (isModeValid(s) || k.equals(headMode)) {
+                    if (isModeValid(s) || k.equalsIgnoreCase(examplesRelation)) {
                         Collections.reverse(s);
                         String str = s.toString().substring(1, s.toString().length() - 1);
                         str = str.replaceAll("\\s", "");
-                        if (k.equals(headMode)) {
+                        if (k.equalsIgnoreCase(examplesRelation)) {
                             logger.debug("HEADMODE :: " + k.toLowerCase() + "(" + str + ")");
                             headModeSet.add(str);
                             //headModeSet.add(k.toLowerCase() + Constants.Regex.OPEN_PARENTHESIS.getValue() + str + Constants.Regex.CLOSE_PARENTHESIS.getValue());

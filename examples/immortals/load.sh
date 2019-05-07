@@ -21,5 +21,5 @@ do
   filename=$(basename "$f")
   # extension="${filename##*.}"
   filename="${filename%.*}"
-  csvloader --file $f $filename -r ./log
+  csvloader --skip 1 --file $f $filename -r ./log
 done

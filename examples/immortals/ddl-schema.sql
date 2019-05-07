@@ -41,14 +41,14 @@ CREATE TABLE cot_event_position
 );
 
 
-create TABLE query1
+create TABLE query1_all_pos
 (
  				id VARCHAR(16) NOT NULL,
 				source_id VARCHAR(16) NOT NULL,
 				cot_type VARCHAR(16) NOT NULL
 );
 
-create TABLE query2
+create TABLE query2_all_pos
 (
  				id VARCHAR(16) NOT NULL,
 				source_id VARCHAR(16) NOT NULL,
@@ -56,7 +56,7 @@ create TABLE query2
 				how VARCHAR(16) NOT NULL
 );
 
-create TABLE query3
+create TABLE query3_all_pos
 (
  				id VARCHAR(16) NOT NULL,
 				source_id VARCHAR(16) NOT NULL,
@@ -65,7 +65,7 @@ create TABLE query3
 );
 
 
-create TABLE query4
+create TABLE query4_all_pos
 (
 				name VARCHAR(16),
 				id VARCHAR(16) NOT NULL,
@@ -73,7 +73,7 @@ create TABLE query4
 				servertime VARCHAR(16) NOT NULL
 );
 
-create TABLE query5
+create TABLE query5_all_pos
 (
 				id VARCHAR(16) NOT NULL,
 				cot_type VARCHAR(16) NOT NULL,
@@ -81,15 +81,7 @@ create TABLE query5
 );
 
 
-create TABLE query6
-(
-				name VARCHAR(16),
-				id VARCHAR(16) NOT NULL,
-				cot_type VARCHAR(16) NOT NULL,
-				servertime VARCHAR(16) NOT NULL
-);
-
-create TABLE query7
+create TABLE query6_all_pos
 (
 				name VARCHAR(16),
 				id VARCHAR(16) NOT NULL,
@@ -97,8 +89,16 @@ create TABLE query7
 				servertime VARCHAR(16) NOT NULL
 );
 
+create TABLE query7_all_pos
+(
+				name VARCHAR(16),
+				id VARCHAR(16) NOT NULL,
+				cot_type VARCHAR(16) NOT NULL,
+				servertime VARCHAR(16) NOT NULL
+);
 
-create TABLE query8
+
+create TABLE query8_all_pos
 (
 				source_id VARCHAR(16) NOT NULL,
 				name VARCHAR(16),
@@ -108,7 +108,7 @@ create TABLE query8
 				tiley VARCHAR(16) NOT NULL
 );
 
-create TABLE query9
+create TABLE query9_all_pos
 (
 				source_id VARCHAR(16) NOT NULL,
 				name VARCHAR(16),

@@ -1,9 +1,12 @@
 package automode.util;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 public class FileUtil {
 	
@@ -24,5 +27,17 @@ public class FileUtil {
 			e.printStackTrace();
 		}
 		return sb.toString();
+	}
+
+	public static void writeToFile(String filename, List<String> lines) {
+		try {
+			File file = new File(filename);
+			FileOutputStream fos = FileUtils.openOutputStream(file,false);
+			fos.close();
+			Path filePath = Paths.get(filename);
+			Files.write(filePath, lines, Charset.defaultCharset());
+		} catch (IOException var3) {
+			throw new RuntimeException(var3.getMessage());
+		}
 	}
 }

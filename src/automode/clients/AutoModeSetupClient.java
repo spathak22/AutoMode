@@ -9,6 +9,7 @@ import automode.util.Constants;
 import automode.util.JsonUtil;
 import castor.language.*;
 import castor.settings.DataModel;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -29,8 +30,21 @@ public class AutoModeSetupClient {
     @Option(name = "-dbUrl", usage = "URL of running db instance", required = false)
     public String dbUrl = Constants.Voltdb.URL.getValue();
 
+    //protected String dbServerURL = "localhost:21212";
+    @Option(name = "-port", usage = "Port number of running db instance", required = false)
+    public String port = Constants.Voltdb.PORT.getValue();
+
     @Option(name = "-target", usage = "Target schema", required = false)
     public String target = null;
+
+    @Option(name = "-examplesRelation", usage = "Examples Relation", required = false)
+    public String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
+
+    @Option(name = "-exampleRelationSuffix", usage = "Examples Relation suffix", required = false)
+    public String examplesRelationSuffix = Constants.Regex.EMPTY_STRING.getValue();
+
+    @Option(name = "-examplesFile", usage = "Files Relation", required = false)
+    public String examplesFile = Constants.Regex.EMPTY_STRING.getValue();
 
     @Option(name = "-storedProcedure", usage = "Voltdb procedure", required = false)
     public String storedProcedure = null;
@@ -100,6 +114,11 @@ public class AutoModeSetupClient {
         logger.debug("Inside run target is : " + target + ", sp is " + storedProcedure);
 
         if (fileInput) {
+            //Check if the exampleFile is in input
+            if (!examplesFile.isEmpty()) {
+                examplesRelation = FilenameUtils.getBaseName(new File(examplesFile).getName());
+                logger.debug("examplesRelation : "+examplesRelation);
+            }
             callAutoModeGenerators();
         } else if (dirInput) {
             File file = new File(dirPath);
@@ -128,6 +147,7 @@ public class AutoModeSetupClient {
      * Call the mode generation algorithms
      */
     public void callAutoModeGenerators() {
+        String url = dbUrl + ":" + port;
         AutoMode autoMode = null;
         IndHelper indHelper = new IndHelper();
         if (algorithm.equals("exact")) {
@@ -140,7 +160,7 @@ public class AutoModeSetupClient {
             }
         }
 
-        DataModel dataModel = autoMode.runModeBuilder(indHelper, threshold, thresholdType, target, storedProcedure, dbUrl, inputIndFile, outputModeFile, outputIndFile);
+        DataModel dataModel = autoMode.runModeBuilder(examplesFile, examplesRelation, indHelper, threshold, thresholdType, target, storedProcedure, url, inputIndFile, outputModeFile, outputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
 
         //If manualTunedModes is not null then remove the modes which has unwanted constants
