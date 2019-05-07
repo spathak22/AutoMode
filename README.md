@@ -28,7 +28,8 @@ Examples in database:
 
 Script Parameters:
 
-```sh       -examplesRelation       :   Provides the name of relation having examples      
+```sh       
+            -examplesRelation       :   Provides the name of relation having examples      
             -examplesRelationSuffix :   Helps distinguish example tables from db tables. 
                                         Restricts the participation of example tables in INDs. 
                                         This is required in cases where there are many target tables populated in db.
@@ -131,6 +132,7 @@ Examples in file
 ```   
    
 Script Parameters:
+
 ```sh
             -target                 :   Query to be learned by castor
             -schema                 :   Specify schema.json file, this helps in differentiating db tables and query tables
@@ -140,7 +142,7 @@ Script Parameters:
             -maxIndError            :   This is to specify exact or approximation inclusion dependency 0 for exact
             -storedProcedure        :   stored procedure name to be used by Castor            
  
- ```      
+```      
 
 This step will generate the final mode for given target which is now ready to be used by castor
      
