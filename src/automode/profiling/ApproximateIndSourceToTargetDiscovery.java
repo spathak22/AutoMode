@@ -73,6 +73,11 @@ public class ApproximateIndSourceToTargetDiscovery {
         VoltDBQuery vQuery = new VoltDBQuery();
         Schema schema = vQuery.getSchema(url);
 
+        if(schema.getRelations().isEmpty()){
+            System.out.println("Error: Database has no relations");
+            return;
+        }
+
         DAOFactory daoFactory = DAOFactory.getDAOFactory(DAOFactory.VOLTDB);
         try {
             //Create list to store all the inds
