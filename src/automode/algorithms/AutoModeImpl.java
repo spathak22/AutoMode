@@ -151,7 +151,7 @@ public abstract class AutoModeImpl implements AutoMode {
         });
 
 
-        if (!target.isEmpty()) {
+        if (!(target==null || target.isEmpty())) {
             target = target.toLowerCase();
         } else {
             logger.debug("No target in input, headMode not created");

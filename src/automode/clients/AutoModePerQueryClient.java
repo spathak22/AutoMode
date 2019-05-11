@@ -134,7 +134,9 @@ public class AutoModePerQueryClient {
 
         if (storedProcedure.isEmpty())
             storedProcedure = dataModel.getSpName();
-        JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), dataModel.getModesBString(), storedProcedure, outputModeFile);
+
+        if(dataModel.getModeH()!=null)
+            JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), dataModel.getModesBString(), storedProcedure, outputModeFile);
 //        if(outputIndFile!=null)
 //            JsonUtil.writeIndsToJsonFormat(dataModel.getInds(),dataModel.getDbRelations(),outputIndFile,target);    }
     }
