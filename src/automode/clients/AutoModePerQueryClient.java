@@ -49,6 +49,9 @@ public class AutoModePerQueryClient {
     @Option(name = "-dbUrl", usage = "URL of running db instance", required = false)
     public String dbUrl = Constants.Voltdb.URL.getValue();
 
+    @Option(name = "-port", usage = "Port number of running db instance", required = false)
+    public String port = Constants.Voltdb.PORT.getValue();
+
     @Option(name = "-examplesRelation", usage = "Examples Relation", required = false)
     public String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
 
@@ -83,6 +86,13 @@ public class AutoModePerQueryClient {
                 examplesRelation = FilenameUtils.getBaseName(new File(examplesFile).getName());
                 logger.debug("examplesRelation : " + examplesRelation);
             }
+            if(dbUrl.isEmpty()){
+                dbUrl = Constants.Voltdb.URL.getValue();
+            }
+            if(port.isEmpty()){
+                port = Constants.Voltdb.PORT.getValue();
+            }
+
             callAutoModeGenerators();
         } else if (dirInput) {
             File file = new File(dirPath);
@@ -111,9 +121,10 @@ public class AutoModePerQueryClient {
      * Call the mode generation algorithms
      */
     public void callAutoModeGenerators() {
+        String url = dbUrl + ":" + port;
         Schema schemaObj = null;
         VoltDBQuery vQuery = new VoltDBQuery();
-        schemaObj = vQuery.getSchema(dbUrl);
+        schemaObj = vQuery.getSchema(url);
         //Obsolete reading schema from json
         //schemaObj = JsonSettingsReader.readSchema(FileUtils.convertFileToJSON(schema));
 
@@ -121,7 +132,7 @@ public class AutoModePerQueryClient {
         DataModel dataModel = autoMode.connectHeadToBodyModes(target, schemaObj, inputModeFile, inputIndFile);
         Commons.resetUniqueVertexTypeGenerator();
 
-        if (storedProcedure == null)
+        if (storedProcedure.isEmpty())
             storedProcedure = dataModel.getSpName();
         JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), dataModel.getModesBString(), storedProcedure, outputModeFile);
 //        if(outputIndFile!=null)

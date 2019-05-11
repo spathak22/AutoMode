@@ -54,15 +54,27 @@ public class AutoModePerQuery extends AutoModeApproximate {
         Set[] o = argumentList.toArray(a);
         Set<String> headModeSet = generateMode(target, o);
 
+
+
+        if (!target.isEmpty()) {
+            target = target.toLowerCase();
+        } else {
+            logger.debug("No target in input, headMode not created");
+            return dataModel;
+        }
+
         //Generate Head Mode
         Mode headModeBody = null;
         if (headModeSet.size() == 1) {
             logger.debug("------------------ HeadMode formed correctly  size is 1 -----------------------");
             for (String s : headModeSet)
                 headModeBody = Mode.stringToMode(target + "(" + s.toString() + ")");
-        } else {
-            logger.error("!!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!");
+        } else if(headModeSet.size() > 1){
+            logger.error("------------------ HeadMode malformed, found more than 1  ------------------");
             headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet) + ")");
+        }else{
+            logger.error("!!!!!!!!!!!!!!  Headmode could not be created, error occurred, check parameters passed  !!!!!!!!!!!!!!!!!!!!!!!");
+            return dataModel;
         }
 
         //Initialize and return new dataModel

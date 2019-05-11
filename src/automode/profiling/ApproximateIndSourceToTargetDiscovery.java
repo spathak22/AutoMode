@@ -40,15 +40,9 @@ public class ApproximateIndSourceToTargetDiscovery {
 
     @Option(name = "-examplesFile", usage = "Examples file", required = false)
     private String examplesFile = Constants.Regex.EMPTY_STRING.getValue();
-    ;
 
     @Option(name = "-examplesRelation", usage = "Examples relation", required = false)
     private String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
-    ;
-
-    @Option(name = "-examplesRelationSuffix", usage = "suffix of tables containing examples", required = false)
-    private String examplesRelationSuffix = Constants.Regex.EMPTY_STRING.getValue();
-    ;
 
 
     @Argument
@@ -95,8 +89,8 @@ public class ApproximateIndSourceToTargetDiscovery {
             String queryTemplate = "select distinct({1}) from {0};";
 
             //Remove unwanted example relations for ind discovery
-            if(!examplesRelationSuffix.isEmpty()){
-                schema.getRelations().entrySet().removeIf(entry -> entry.getKey().toLowerCase().endsWith(examplesRelationSuffix.toLowerCase())
+            if(!target.isEmpty()){
+                schema.getRelations().entrySet().removeIf(entry -> entry.getKey().toLowerCase().startsWith(target.toLowerCase())
                         && !entry.getKey().equalsIgnoreCase(examplesRelation));
             }
 

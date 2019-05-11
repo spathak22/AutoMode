@@ -28,6 +28,9 @@ import java.util.*;
 
 public class ApproximateINDDiscovery {
 
+    @Option(name = "-target", usage = "Target schema", required = false)
+    public String target = null;
+
     @Option(name = "-maxerror", usage = "Maximum error", required = true)
     private double maxError;
 
@@ -36,13 +39,9 @@ public class ApproximateINDDiscovery {
 
     @Option(name = "-examplesFile", usage = "Examples file", required = false)
     private String examplesFile = Constants.Regex.EMPTY_STRING.getValue();
-    ;
 
     @Option(name = "-examplesRelation", usage = "Examples relation", required = false)
     private String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
-
-    @Option(name = "-examplesRelationSuffix", usage = "suffix of tables containing examples", required = false)
-    private String examplesRelationSuffix = Constants.Regex.EMPTY_STRING.getValue();
 
     @Option(name = "-dbUrl", usage = "URL of running db instance", required = false)
     public String dbUrl = Constants.Voltdb.URL.getValue();
@@ -182,8 +181,8 @@ public class ApproximateINDDiscovery {
             String queryTemplate = "select distinct({1}) from {0};";
 
             //Remove unwanted example relations for ind discovery
-            if(!examplesRelationSuffix.isEmpty()){
-                schema.getRelations().entrySet().removeIf(entry -> entry.getKey().toLowerCase().endsWith(examplesRelationSuffix.toLowerCase())
+            if(!target.isEmpty()){
+                schema.getRelations().entrySet().removeIf(entry -> entry.getKey().toLowerCase().startsWith(target.toLowerCase())
                         && !entry.getKey().equalsIgnoreCase(examplesRelation));
             }
 

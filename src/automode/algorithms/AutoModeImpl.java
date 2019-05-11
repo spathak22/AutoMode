@@ -32,7 +32,7 @@ public abstract class AutoModeImpl implements AutoMode {
      * 1. Create relations
      * 2. Generate mode definitions
      */
-    public DataModel buildModes(String examplesRelation, Map<String, List<String>> rel, String type, int threshold, String thresholdType, String headMode, String dbUrl, String spName) {
+    public DataModel buildModes(String examplesRelation, Map<String, List<String>> rel, String type, int threshold, String thresholdType, String headMode, String dbUrl, String spName){
 
         //1. Create Relation set consists of relations in format as : relation({+T1,+T2},{-T3,#T3})
         Map<String, List<Set<String>>> relationSet = createRelationsTypeSet(rel, threshold, thresholdType, examplesRelation, dbUrl);
@@ -109,7 +109,7 @@ public abstract class AutoModeImpl implements AutoMode {
     /**
      * Method to generate Mode Definition recursively
      */
-    public DataModel generateModeDeffintion(String examplesRelation, Map<String, List<Set<String>>> relationSet, String type, String headMode, String spName) {
+    public DataModel generateModeDeffintion(String examplesRelation, Map<String, List<Set<String>>> relationSet, String type, String target, String spName){
         logger.debug("\n ----------------  Predicates " + type + " ------------------------");
         Set<String> headModeSet = new HashSet<>();
         List<Mode> modes = new ArrayList<>();
@@ -150,25 +150,27 @@ public abstract class AutoModeImpl implements AutoMode {
             }
         });
 
-        //Generate Head Mode
-        Mode headModeBody = null;
 
-        //null check
-        String target = null;
-        if (headMode != null) {
-            target = headMode.toLowerCase();
+        if (!target.isEmpty()) {
+            target = target.toLowerCase();
         } else {
+            logger.debug("No target in input, headMode not created");
             return new DataModel(null, modes, spName);
         }
 
+        //Generate Head Mode
+        Mode headModeBody = null;
         if (headModeSet.size() == 1) {
             logger.debug("------------------ HeadMode formed correctly  size is 1 -----------------------");
             for (String s : headModeSet) {
                 headModeBody = Mode.stringToMode(target + "(" + s.toString() + ")");
             }
-        } else {
-            logger.error("!!!!!!!!!!!!!!  HeadMode malformed, found more than 1  !!!!!!!!!!!!!!!!!!!!!!!");
+        } else if(headModeSet.size() > 1){
+            logger.debug("------------------  HeadMode malformed, found more than 1  -----------------------");
             headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet) + ")");
+        }else{
+            logger.error("!!!!!!!!!!!!!!  Headmode could not be created, error occurred, check parameters passed  !!!!!!!!!!!!!!!!!!!!!!!");
+            return new DataModel(null, modes, spName);
         }
 
         //Initialize and return new dataModel
@@ -233,7 +235,7 @@ public abstract class AutoModeImpl implements AutoMode {
      */
     public static List<List<String>> cartesianProduct(String k, Set<String>... sets) {
         List<List<String>> retset = null;
-        if (sets.length >= 2)
+        //if (sets.length >= 2)
             retset = _cartesianProduct(0, sets);
         return retset;
     }

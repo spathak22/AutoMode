@@ -40,9 +40,6 @@ public class AutoModeSetupClient {
     @Option(name = "-examplesRelation", usage = "Examples Relation", required = false)
     public String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
 
-    @Option(name = "-exampleRelationSuffix", usage = "Examples Relation suffix", required = false)
-    public String examplesRelationSuffix = Constants.Regex.EMPTY_STRING.getValue();
-
     @Option(name = "-examplesFile", usage = "Files Relation", required = false)
     public String examplesFile = Constants.Regex.EMPTY_STRING.getValue();
 
@@ -119,6 +116,13 @@ public class AutoModeSetupClient {
                 examplesRelation = FilenameUtils.getBaseName(new File(examplesFile).getName());
                 logger.debug("examplesRelation : "+examplesRelation);
             }
+            if(dbUrl.isEmpty()){
+                dbUrl = Constants.Voltdb.URL.getValue();
+            }
+            if(port.isEmpty()){
+                port = Constants.Voltdb.PORT.getValue();
+            }
+
             callAutoModeGenerators();
         } else if (dirInput) {
             File file = new File(dirPath);
@@ -165,15 +169,20 @@ public class AutoModeSetupClient {
 
         //If manualTunedModes is not null then remove the modes which has unwanted constants
         logger.debug(" manualTunedConstants value : "+manualTunedConstants);
-        if(manualTunedConstants!=null){
+        if(!manualTunedConstants.isEmpty()){
             dataModel.setModesB(this.manualTunedTheConstants(dataModel.getModesB(), manualTunedConstants, indHelper.getDbRelations()));
         }
 
         //Write Modes and INDS Output files
         String headMode = null;
-        if (target != null) {
+        if (!examplesRelation.isEmpty()) {
             headMode = dataModel.getModeH().toString();
         }
+
+        //If storedProcedure is empty
+        if(storedProcedure.isEmpty())
+            storedProcedure=null;
+
         JsonUtil.writeModeToJsonFormat(null, headMode, dataModel.getModesBString(), storedProcedure, outputModeFile);
         if (outputIndFile != null)
             JsonUtil.writeIndsToJsonFormat(indHelper.getInds(), indHelper.getDbRelations(), outputIndFile, target);

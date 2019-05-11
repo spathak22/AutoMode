@@ -20,10 +20,10 @@ while [ -n "$1" ]; do # while loop starts
         shift
         ;;
 
-    -examplesRelationSuffix)
-        examplesRelationSuffix="$2"
+    -target)
+        target="$2"
 
-        echo "-examplesRelationSuffix option passed, with value $examplesRelationSuffix"
+        echo "-target option passed, with value $target"
 
         shift
         ;;
@@ -44,16 +44,17 @@ done
 
 
 
-target="$1"
-inputIndFile="$2"
-inputModeFile="$3"
-outputModeFile="$4"
-maxIndError="$5"
-storedProcedure="$6"
+inputIndFile="$1"
+inputModeFile="$2"
+outputModeFile="$3"
+maxIndError="$4"
+storedProcedure="$5"
+dbUrl="$6"
+port="$7"
 
 
 echo "Extracting One way inclusion dependencies .... "
-java -cp ../../dist/Automode.jar  automode.profiling.ApproximateIndSourceToTargetDiscovery -target="$target" -maxerror="$maxIndError" -outfile="$inputIndFile" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation" -examplesRelationSuffix="$examplesRelationSuffix"
+java -cp ../../dist/Automode.jar  automode.profiling.ApproximateIndSourceToTargetDiscovery -target="$target" -maxerror="$maxIndError" -outfile="$inputIndFile" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation"
 
 echo "Running Automode per query ... ""$target"
-java -cp ../../dist/Automode.jar automode.clients.AutoModePerQueryClient  -target="$target" -inputIndFile="$inputIndFile" -inputModeFile="$inputModeFile" -outputModeFile="$outputModeFile" -storedProcedure="$storedProcedure" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation"
+java -cp ../../dist/Automode.jar automode.clients.AutoModePerQueryClient  -target="$target" -inputIndFile="$inputIndFile" -inputModeFile="$inputModeFile" -outputModeFile="$outputModeFile" -storedProcedure="$storedProcedure" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation" -dbUrl="$dbUrl" -port="$port"

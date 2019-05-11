@@ -20,10 +20,10 @@ while [ -n "$1" ]; do # while loop starts
         shift
         ;;
 
-    -examplesRelationSuffix)
-        examplesRelationSuffix="$2"
+    -target)
+        target="$2"
 
-        echo "-examplesRelationSuffix option passed, with value $examplesRelationSuffix"
+        echo "-target option passed, with value $target"
 
         shift
         ;;
@@ -50,17 +50,16 @@ inputIndFilePath="$3"
 outModeFilePath="$4"
 constThresholdType="$5"
 constThresholdValue="$6"
-target="$7"
-storedProcedure="$8"
-dbServerUrl="$9"
-schema="$10"
-manualTunedConstants="$11"
+storedProcedure="$7"
+dbUrl="$8"
+port="$9"
+manualTunedConstants="${10}"
 
 echo "-------- Setting up Automode ---------"
 echo "Extracting inclusion dependencies ... "
-java -cp ../../dist/Automode.jar  automode.profiling.ApproximateINDDiscovery -maxerror="$maxIndError" -outfile="$inputIndFilePath" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation" -examplesRelationSuffix="$examplesRelationSuffix"
+java -cp ../../dist/Automode.jar  automode.profiling.ApproximateINDDiscovery -maxerror="$maxIndError" -outfile="$inputIndFilePath" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation" -target="$target"
 
 echo "Running Automode for ... " "$target"
-java -cp ../../dist/Automode.jar automode.clients.AutoModeSetupClient -target="$target"  -storedProcedure="$storedProcedure"  -algorithm="$algorithm"  -inputIndFile="$inputIndFilePath" -outputModeFile="$outModeFilePath" -threshold="$constThresholdValue" -thresholdType="$constThresholdType" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation"
+java -cp ../../dist/Automode.jar automode.clients.AutoModeSetupClient -target="$target"  -storedProcedure="$storedProcedure"  -algorithm="$algorithm"  -inputIndFile="$inputIndFilePath" -outputModeFile="$outModeFilePath" -threshold="$constThresholdValue" -thresholdType="$constThresholdType" -examplesFile="$examplesFile" -examplesRelation="$examplesRelation" -dbUrl="$dbUrl" -port="$port" -manualTunedConstants="$manualTunedConstants"
 
 echo "-------- Finished setting up Automode -------- "

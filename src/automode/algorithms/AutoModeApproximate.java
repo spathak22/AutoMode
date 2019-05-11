@@ -15,7 +15,7 @@ public class AutoModeApproximate extends AutoModeImpl {
      *  Method to initialize mode generation
      */
     @Override
-    public DataModel runModeBuilder(String examplesFile, String examplesRelation, IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile) {
+    public DataModel runModeBuilder(String examplesFile, String examplesRelation, IndHelper indHelper, int threshold, String thresholdType, String target, String storedProcedure, String dbUrl, String inputIndFile, String outputModeFile, String outputIndFile){
         logger.debug("------------------ Generating Approx Mode  -----------------------");
         String inds = FileUtil.readFile(inputIndFile).toLowerCase();
 //        List<String> modes = new ArrayList<>();
