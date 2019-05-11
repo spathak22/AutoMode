@@ -146,8 +146,11 @@ Script Parameters:
 ```      
 
 This step will generate the final mode for given target which is now ready to be used by castor
-NOTE: The headmode will only be created when target is provided with examplesRelation/examplesFile
 
+NOTE: 
+```sh
+The headmode will only be created only when target is provided with examplesRelation/examplesFile
+```
 
  
  
