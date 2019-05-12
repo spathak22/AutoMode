@@ -2,6 +2,7 @@ package automode.profiling;
 
 import automode.db.VoltDBQuery;
 import automode.util.Constants;
+import automode.util.FileUtil;
 import castor.dataaccess.db.DAOFactory;
 import castor.dataaccess.db.GenericDAO;
 import castor.dataaccess.db.GenericTableObject;
@@ -9,10 +10,9 @@ import castor.dataaccess.file.CSVFileReader;
 import castor.language.Relation;
 import castor.language.Schema;
 import castor.language.Tuple;
-import castor.utils.FileUtils;
-import automode.util.FileUtil;
 import castor.utils.TimeWatch;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -44,9 +44,11 @@ public class ApproximateIndSourceToTargetDiscovery {
     @Option(name = "-examplesRelation", usage = "Examples relation", required = false)
     private String examplesRelation = Constants.Regex.EMPTY_STRING.getValue();
 
-
     @Argument
     private List<String> arguments = new ArrayList<String>();
+
+    final static Logger logger = Logger.getLogger(ApproximateIndSourceToTargetDiscovery.class);
+
 
     public static void main(String[] args) {
         ApproximateIndSourceToTargetDiscovery discovery = new ApproximateIndSourceToTargetDiscovery();
@@ -55,6 +57,7 @@ public class ApproximateIndSourceToTargetDiscovery {
 
 
     public void discoverApproximateINDsSourceToTarget(String[] args) {
+        logger.debug("Discovering inclusion dependencies for given source to target");
         TimeWatch tw = TimeWatch.start();
         Map<String,GenericTableObject> cache = new HashMap<>();
 

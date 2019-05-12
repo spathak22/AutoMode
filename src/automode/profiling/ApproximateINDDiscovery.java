@@ -6,23 +6,19 @@ import automode.util.FileUtil;
 import castor.dataaccess.db.DAOFactory;
 import castor.dataaccess.db.GenericDAO;
 import castor.dataaccess.db.GenericTableObject;
-import castor.dataaccess.db.VoltDBConnectionContainer;
 import castor.dataaccess.file.CSVFileReader;
 import castor.language.Relation;
 import castor.language.Schema;
 import castor.language.Tuple;
 import castor.utils.TimeWatch;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
-import org.voltdb.VoltTable;
-import org.voltdb.client.ClientResponse;
-import org.voltdb.client.ProcCallException;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.*;
 
@@ -51,6 +47,9 @@ public class ApproximateINDDiscovery {
 
     @Argument
     private List<String> arguments = new ArrayList<String>();
+
+    final static Logger logger = Logger.getLogger(ApproximateINDDiscovery.class);
+
 
     public static void main(String[] args) {
         ApproximateINDDiscovery discovery = new ApproximateINDDiscovery();
@@ -145,8 +144,9 @@ public class ApproximateINDDiscovery {
      * This version finds overlap between two relations by loading them to memory and computing overlap programatically
      */
     public void discoverApproximateINDsV2(String[] args) {
+        logger.debug("Discovering inclusion dependencies");
         TimeWatch tw = TimeWatch.start();
-        Map<String,GenericTableObject> cache = new HashMap<>();
+        Map<String, GenericTableObject> cache = new HashMap<>();
 
         // Parse the arguments
         try {
@@ -163,7 +163,7 @@ public class ApproximateINDDiscovery {
         VoltDBQuery vQuery = new VoltDBQuery();
         Schema schema = vQuery.getSchema(url);
 
-        if(schema.getRelations().isEmpty()){
+        if (schema.getRelations().isEmpty()) {
             System.out.println("Error: Database has no relations");
             return;
         }
@@ -185,7 +185,7 @@ public class ApproximateINDDiscovery {
             String queryTemplate = "select distinct({1}) from {0};";
 
             //Remove unwanted example relations for ind discovery
-            if(!target.isEmpty()){
+            if (!target.isEmpty()) {
                 schema.getRelations().entrySet().removeIf(entry -> entry.getKey().toLowerCase().startsWith(target.toLowerCase())
                         && !entry.getKey().equalsIgnoreCase(examplesRelation));
             }
@@ -201,75 +201,81 @@ public class ApproximateINDDiscovery {
                 schema.getRelations().put(examplesRelation, new Relation(examplesRelation, examplesFileHeader));
             }
 
-            for (Relation relation1 : schema.getRelations().values()) {
+
+            if (maxError == 0.0) {
+                BinderAlgorithm binder = new BinderAlgorithm();
+                inds = binder.discoverExactINDsV2(schema,dbUrl,port);
+            } else {
+                for (Relation relation1 : schema.getRelations().values()) {
 
 //                if (!examplesRelationSuffix.isEmpty() && (relation1.getName().toLowerCase().endsWith(examplesRelationSuffix.toLowerCase()) && !relation1.getName().equalsIgnoreCase(examplesRelation)))
 //                    continue;
 
-                for (String attribute1 : relation1.getAttributeNames()) {
+                    for (String attribute1 : relation1.getAttributeNames()) {
 
-                    for (Relation relation2 : schema.getRelations().values()) {
+                        for (Relation relation2 : schema.getRelations().values()) {
 
-                        // If same relation continue
-                        if (relation1.getName().equalsIgnoreCase(relation2.getName())) //|| (!examplesRelationSuffix.isEmpty() && (relation2.getName().toLowerCase().endsWith(examplesRelationSuffix.toLowerCase()) && !relation2.getName().equalsIgnoreCase(examplesRelation))))
-                            continue;
-
-                        for (String attribute2 : relation2.getAttributeNames()) {
-
-                            String leftRelationQuery = MessageFormat.format(queryTemplate, relation1.getName(), attribute1);
-                            String rightRelationQuery = MessageFormat.format(queryTemplate, relation2.getName(), attribute2);
-
-                            GenericTableObject leftResult = null;
-                            if (relation1.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
-                                if(!cache.containsKey(relation1+"."+attribute1)) {
-                                    leftResult = this.getDistinctExamplesFromFile(examplesFile, relation1, attribute1);
-                                    cache.put(relation1+"."+attribute1,leftResult);
-                                }else{
-                                    leftResult = cache.get(relation1+"."+attribute1);
-                                }
-                            } else {
-                                leftResult = genericDAO.executeQuery(leftRelationQuery);
-                            }
-
-
-                            int leftAttributeCount = leftResult.getTable().size();
-
-                            // If denominator is 0, skip
-                            if (leftAttributeCount == 0) {
+                            // If same relation continue
+                            if (relation1.getName().equalsIgnoreCase(relation2.getName())) //|| (!examplesRelationSuffix.isEmpty() && (relation2.getName().toLowerCase().endsWith(examplesRelationSuffix.toLowerCase()) && !relation2.getName().equalsIgnoreCase(examplesRelation))))
                                 continue;
-                            }
 
-                            GenericTableObject rightResult = null;
-                            if (relation2.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
-                                if(!cache.containsKey(relation2+"."+attribute2)) {
-                                    rightResult = this.getDistinctExamplesFromFile(examplesFile, relation2, attribute2);
-                                    cache.put(relation2+"."+attribute2,rightResult);
-                                }else{
-                                    rightResult=cache.get(relation2+"."+attribute2);
+                            for (String attribute2 : relation2.getAttributeNames()) {
+
+                                String leftRelationQuery = MessageFormat.format(queryTemplate, relation1.getName(), attribute1);
+                                String rightRelationQuery = MessageFormat.format(queryTemplate, relation2.getName(), attribute2);
+
+                                GenericTableObject leftResult = null;
+                                if (relation1.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
+                                    if (!cache.containsKey(relation1 + "." + attribute1)) {
+                                        leftResult = this.getDistinctExamplesFromFile(examplesFile, relation1, attribute1);
+                                        cache.put(relation1 + "." + attribute1, leftResult);
+                                    } else {
+                                        leftResult = cache.get(relation1 + "." + attribute1);
+                                    }
+                                } else {
+                                    leftResult = genericDAO.executeQuery(leftRelationQuery);
                                 }
-                            } else {
-                                rightResult = genericDAO.executeQuery(rightRelationQuery);
+
+
+                                int leftAttributeCount = leftResult.getTable().size();
+
+                                // If denominator is 0, skip
+                                if (leftAttributeCount == 0) {
+                                    continue;
+                                }
+
+                                GenericTableObject rightResult = null;
+                                if (relation2.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
+                                    if (!cache.containsKey(relation2 + "." + attribute2)) {
+                                        rightResult = this.getDistinctExamplesFromFile(examplesFile, relation2, attribute2);
+                                        cache.put(relation2 + "." + attribute2, rightResult);
+                                    } else {
+                                        rightResult = cache.get(relation2 + "." + attribute2);
+                                    }
+                                } else {
+                                    rightResult = genericDAO.executeQuery(rightRelationQuery);
+                                }
+
+                                Set<Tuple> leftRelationValues = new HashSet<Tuple>(leftResult.getTable());
+                                Set<Tuple> rightRelationValues = new HashSet<Tuple>(rightResult.getTable());
+
+                                int intersectionCount = 0;
+
+                                for (Tuple tuple : leftRelationValues) {
+                                    if (rightRelationValues.contains(tuple))
+                                        intersectionCount++;
+                                }
+
+                                double error = 1.0 - ((double) intersectionCount / (double) leftAttributeCount);
+
+                                if (error <= maxError)
+                                    //System.out.println(relation1.getName()+"["+attribute1+"] < "+ relation2.getName()+"["+attribute2+"] - error: "+error);
+                                    inds.add(("(" + relation1.getName() + "." + attribute1 + ") < (" + relation2.getName() + "." + attribute2 + ") < " + error).toLowerCase());
                             }
-
-                            Set<Tuple> leftRelationValues = new HashSet<Tuple>(leftResult.getTable());
-                            Set<Tuple> rightRelationValues = new HashSet<Tuple>(rightResult.getTable());
-
-                            int intersectionCount = 0;
-
-                            for (Tuple tuple : leftRelationValues) {
-                                if (rightRelationValues.contains(tuple))
-                                    intersectionCount++;
-                            }
-
-                            double error = 1.0 - ((double) intersectionCount / (double) leftAttributeCount);
-
-                            if (error <= maxError)
-                                //System.out.println(relation1.getName()+"["+attribute1+"] < "+ relation2.getName()+"["+attribute2+"] - error: "+error);
-                                inds.add(("(" + relation1.getName() + "." + attribute1 + ") < (" + relation2.getName() + "." + attribute2 + ") < " + error).toLowerCase());
                         }
                     }
-                }
 
+                }
             }
 
             FileUtil.writeToFile(outfile, inds);
