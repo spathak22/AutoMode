@@ -315,10 +315,10 @@ public class ApproximateINDDiscovery {
     }
 
     public boolean isEmtpyRelation(String relationName, GenericDAO genericDAO){
-        String queryTemplate = "select count(*) from {0};";
+        String queryTemplate = "select * from {0};";
         String query = MessageFormat.format(queryTemplate, relationName);
-        long result = genericDAO.executeScalarQuery(query);
-        if(result==0)
+        GenericTableObject result = genericDAO.executeQuery(query);
+        if(result.getTable().size()==0)
             return true;
         return false;
     }
