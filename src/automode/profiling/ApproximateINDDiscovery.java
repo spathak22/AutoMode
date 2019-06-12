@@ -1,6 +1,7 @@
 package automode.profiling;
 
 import automode.db.VoltDBQuery;
+import automode.util.Commons;
 import automode.util.Constants;
 import automode.util.FileUtil;
 import castor.dataaccess.db.DAOFactory;
@@ -184,7 +185,7 @@ public class ApproximateINDDiscovery {
             GenericDAO genericDAO = daoFactory.getGenericDAO();
 
             //Remove empty tables from schema
-            schema.getRelations().entrySet().removeIf(entry -> this.isEmtpyRelation(entry.getKey(), genericDAO));
+            schema.getRelations().entrySet().removeIf(entry -> Commons.isEmtpyRelation(entry.getKey(), genericDAO));
 
             String queryTemplate = "select distinct({1}) from {0};";
 
@@ -231,7 +232,7 @@ public class ApproximateINDDiscovery {
                                 GenericTableObject leftResult = null;
                                 if (relation1.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
                                     if (!cache.containsKey(relation1 + "." + attribute1)) {
-                                        leftResult = this.getDistinctExamplesFromFile(examplesFile, relation1, attribute1);
+                                        leftResult = Commons.getDistinctExamplesFromFile(examplesFile, relation1, attribute1);
                                         cache.put(relation1 + "." + attribute1, leftResult);
                                     } else {
                                         leftResult = cache.get(relation1 + "." + attribute1);
@@ -251,7 +252,7 @@ public class ApproximateINDDiscovery {
                                 GenericTableObject rightResult = null;
                                 if (relation2.getName().equalsIgnoreCase(examplesRelation) && !examplesFile.isEmpty()) {
                                     if (!cache.containsKey(relation2 + "." + attribute2)) {
-                                        rightResult = this.getDistinctExamplesFromFile(examplesFile, relation2, attribute2);
+                                        rightResult = Commons.getDistinctExamplesFromFile(examplesFile, relation2, attribute2);
                                         cache.put(relation2 + "." + attribute2, rightResult);
                                     } else {
                                         rightResult = cache.get(relation2 + "." + attribute2);
@@ -293,33 +294,5 @@ public class ApproximateINDDiscovery {
         System.out.println("Finished in: " + tw.time() + " ms");
     }
 
-    /*
-    * This method is equivalent of executeDAOQuery for running "select distinct({1}) from {0};" on example files
-    **/
-    public GenericTableObject getDistinctExamplesFromFile(String examplesFile, Relation relation, String attribute) {
-        Set<String> visitedSet = new HashSet<>();
-        List<Tuple> resultSet = new ArrayList<>();
 
-        List<Tuple> tuples = CSVFileReader.readCSV(examplesFile);
-        int index = relation.getAttributeNames().indexOf(attribute);
-
-        for (Tuple tuple : tuples) {
-            if (!visitedSet.contains(tuple.getStringValues().get(index))) {
-                List<Object> row = new ArrayList();
-                visitedSet.add(tuple.getStringValues().get(index));
-                row.add(tuple.getStringValues().get(index));
-                resultSet.add(new Tuple(row));
-            }
-        }
-        return new GenericTableObject(resultSet);
-    }
-
-    public boolean isEmtpyRelation(String relationName, GenericDAO genericDAO){
-        String queryTemplate = "select * from {0};";
-        String query = MessageFormat.format(queryTemplate, relationName);
-        GenericTableObject result = genericDAO.executeQuery(query);
-        if(result.getTable().size()==0)
-            return true;
-        return false;
-    }
 }
