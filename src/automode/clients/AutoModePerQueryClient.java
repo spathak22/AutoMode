@@ -17,6 +17,9 @@ import org.kohsuke.args4j.Option;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class AutoModePerQueryClient {
 
@@ -135,8 +138,12 @@ public class AutoModePerQueryClient {
         if (storedProcedure.isEmpty())
             storedProcedure = dataModel.getSpName();
 
+        //Remove duplicate modes
+        LinkedHashSet<String> bodyModesStringSet = new LinkedHashSet<>(dataModel.getModesBString());
+        List<String> bodyModesString = new ArrayList<>(bodyModesStringSet);
+
         if(dataModel.getModeH()!=null)
-            JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), dataModel.getModesBString(), storedProcedure, outputModeFile);
+            JsonUtil.writeModeToJsonFormat(null, dataModel.getModeH().toString(), bodyModesString, storedProcedure, outputModeFile);
 //        if(outputIndFile!=null)
 //            JsonUtil.writeIndsToJsonFormat(dataModel.getInds(),dataModel.getDbRelations(),outputIndFile,target);    }
     }

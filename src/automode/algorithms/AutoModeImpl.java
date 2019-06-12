@@ -3,6 +3,7 @@ package automode.algorithms;
 import automode.db.VoltDBQuery;
 import automode.util.Commons;
 import automode.util.Constants;
+import castor.language.Argument;
 import castor.language.Mode;
 import castor.settings.DataModel;
 import org.apache.log4j.Logger;
@@ -167,7 +168,7 @@ public abstract class AutoModeImpl implements AutoMode {
             }
         } else if(headModeSet.size() > 1){
             logger.debug("------------------  HeadMode malformed, found more than 1  -----------------------");
-            headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet) + ")");
+            headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet, modes) + ")");
         }else{
             logger.error("!!!!!!!!!!!!!!  Headmode could not be created, error occurred, check parameters passed  !!!!!!!!!!!!!!!!!!!!!!!");
             return new DataModel(null, modes, spName);
@@ -300,7 +301,7 @@ public abstract class AutoModeImpl implements AutoMode {
     /**
      * Remove the multiple head modes
      */
-    public String optimiseHeadMode(Set<String> headModeSet) {
+    public String optimiseHeadMode(Set<String> headModeSet, List<Mode> modes) {
         logger.debug("!!!! Fixing HeadMode !!!!");
         List<Set> termsList = new ArrayList<>();
         //String targetRelation = null;
@@ -344,6 +345,10 @@ public abstract class AutoModeImpl implements AutoMode {
             }
         }
 
+        //Update type information in body mode as well:
+        //Example: if T5 was replaced with T1 in headmode then find all T5 instances in bodymode and replace them with T1
+        updateBodyModes(modes, visitedTerms);
+
         return String.join(Constants.Regex.COMMA.getValue(), targetMode);
         //return targetRelation + Constants.Regex.OPEN_PARENTHESIS.getValue() + targetTerms + Constants.Regex.CLOSE_PARENTHESIS.getValue();
     }
@@ -356,6 +361,23 @@ public abstract class AutoModeImpl implements AutoMode {
             map.put(term, value);
         }
     }
+
+    public void updateBodyModes(List<Mode> modes, Map<String, String> visitedTerms){
+        LinkedHashSet<Mode> modeSet = new LinkedHashSet<>();
+        for(Mode mode: modes){
+            for(Argument argument: mode.getArguments()){
+                if(visitedTerms.containsKey(Constants.ModeType.INPUT.getValue()+argument.getType())){
+                    argument.setType(visitedTerms.get(Constants.ModeType.INPUT.getValue()+argument.getType()).substring(1));
+                }
+            }
+            modeSet.add(mode);
+        }
+        modes.clear();
+        for (Mode mode : modeSet){
+            modes.add(mode);
+        }
+    }
+
 
     /**
      * Intermediate helper methods

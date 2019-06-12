@@ -183,7 +183,11 @@ public class AutoModeSetupClient {
         if(storedProcedure.isEmpty())
             storedProcedure=null;
 
-        JsonUtil.writeModeToJsonFormat(null, headMode, dataModel.getModesBString(), storedProcedure, outputModeFile);
+        //Remove duplicate modes
+        LinkedHashSet<String> bodyModesStringSet = new LinkedHashSet<>(dataModel.getModesBString());
+        List<String> bodyModesString = new ArrayList<>(bodyModesStringSet);
+
+        JsonUtil.writeModeToJsonFormat(null, headMode, bodyModesString, storedProcedure, outputModeFile);
         if (outputIndFile != null)
             JsonUtil.writeIndsToJsonFormat(indHelper.getInds(), indHelper.getDbRelations(), outputIndFile, target);
         logger.debug("-------- Finished setting up Automode ---------");

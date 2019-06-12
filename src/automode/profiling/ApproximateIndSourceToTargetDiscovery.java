@@ -94,6 +94,10 @@ public class ApproximateIndSourceToTargetDiscovery {
                 return;
             }
             GenericDAO genericDAO = daoFactory.getGenericDAO();
+
+            //Remove empty tables from schema
+            schema.getRelations().entrySet().removeIf(entry -> this.isEmtpyRelation(entry.getKey(), genericDAO));
+
             String queryTemplate = "select distinct({1}) from {0};";
 
             //Remove unwanted example relations for ind discovery
@@ -221,4 +225,12 @@ public class ApproximateIndSourceToTargetDiscovery {
         return new GenericTableObject(resultSet);
     }
 
+    public boolean isEmtpyRelation(String relationName, GenericDAO genericDAO){
+        String queryTemplate = "select * from {0};";
+        String query = MessageFormat.format(queryTemplate, relationName);
+        GenericTableObject result = genericDAO.executeQuery(query);
+        if(result.getTable().size()==0)
+            return true;
+        return false;
+    }
 }

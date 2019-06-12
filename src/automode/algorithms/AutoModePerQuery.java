@@ -71,7 +71,7 @@ public class AutoModePerQuery extends AutoModeApproximate {
                 headModeBody = Mode.stringToMode(target + "(" + s.toString() + ")");
         } else if(headModeSet.size() > 1){
             logger.error("------------------ HeadMode malformed, found more than 1  ------------------");
-            headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet) + ")");
+            headModeBody = Mode.stringToMode(target + "(" + optimiseHeadMode(headModeSet, dataModel.getModesB()) + ")");
         }else{
             logger.error("!!!!!!!!!!!!!!  Headmode could not be created, error occurred, check parameters passed  !!!!!!!!!!!!!!!!!!!!!!!");
             return dataModel;
