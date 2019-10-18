@@ -5,22 +5,20 @@ WebKB.
 
 # Installation
 Install VoltDB
-Currently, Castor only works on top of the in-memory RDBMS VoltDB.
 
 ## Download and install VoltDB Community Edition. Instructions available here.
 Set environment variables
 Set VOLTDB_HOME environment variable to installation directory of VoltDB.
 Add $VOLTDB_HOME/bin to PATH environment variable.
 
-Compile Automode
-Compile Castor by running:
+Compile Automode by running:
 ```sh
 ant
 ```
 It will generate a dist folder, containing Automode.jar.
 
 
-##Steps to run on UWCSE dataset:
+## Steps to run on UWCSE dataset:
 
 Setup the dataset in Voltdb
 ```sh
@@ -64,7 +62,7 @@ Script Parameters:
 Mode is generated and stored under "out" directory and other intermediate results such as setup_inds.txt are stored under automode-input directory           
 
 
-##Steps to run on Immortals dataset:
+## Steps to run on Immortals dataset:
 
 Setup the dataset in Voltdb with all the examples relations
 
@@ -128,7 +126,7 @@ Script Parameters:
 
              
     
-####Run: examples/immortals/run_query.sh to generate the final modes. 
+#### Run: examples/immortals/run_query.sh to generate the final modes. 
 The script does two things:
 
 1.  It runs the profiling algorithm to generate the one way inclusion dependency. 
