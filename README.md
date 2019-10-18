@@ -2,7 +2,24 @@
 
 Following is the more generalized steps to run Automode for any dataset such as Immortals, UWCSE, IMDB, HIV, CORA,
 WebKB.
- 
+
+# Installation
+Install VoltDB
+Currently, Castor only works on top of the in-memory RDBMS VoltDB.
+
+## Download and install VoltDB Community Edition. Instructions available here.
+Set environment variables
+Set VOLTDB_HOME environment variable to installation directory of VoltDB.
+Add $VOLTDB_HOME/bin to PATH environment variable.
+
+Compile Automode
+Compile Castor by running:
+```sh
+ant
+```
+It will generate a dist folder, containing Automode.jar.
+
+
 ##Steps to run on UWCSE dataset:
 
 Setup the dataset in Voltdb
