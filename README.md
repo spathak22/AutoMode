@@ -1,9 +1,9 @@
-#Automode: An automatic language bias generator system 
+# Automode: An automatic language bias generator system 
 
 Following is the more generalized steps to run Automode for any dataset such as Immortals, UWCSE, IMDB, HIV, CORA,
 WebKB.
 
-# Installation
+## Installation
 Install VoltDB
 
 ## Download and install VoltDB Community Edition. Instructions available here.
