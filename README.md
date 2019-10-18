@@ -6,7 +6,7 @@ WebKB.
 ## Installation
 Install VoltDB
 
-## Download and install VoltDB Community Edition. Instructions available here.
+## Download and install VoltDB Community Edition. Instructions available.
 Set environment variables
 Set VOLTDB_HOME environment variable to installation directory of VoltDB.
 Add $VOLTDB_HOME/bin to PATH environment variable.
@@ -98,7 +98,7 @@ Mode is generated and stored under "out" directory and other intermediate result
 
 ### Two step method 
 
-####Run: examples/immortals/setup.sh to generate the base modes. 
+#### Run: examples/immortals/setup.sh to generate the base modes. 
 The script does two things:
 
 1.  It runs the profiling algorithm to generate the inclusion dependency(target query tables will be omitted)
