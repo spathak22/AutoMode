@@ -30,12 +30,12 @@ Run: examples/uwcse/run.sh to run the Automode. This script does two things:
 1.  It runs the profiling algorithm to generate the inclusion dependency(DB tables and target query tables included)
 2.  It runs AutoMode setup client to generate the modes. The script uses inds generated in step-1 
     
-Examples in database:
+For examples in database:
 
 ```sh
     $ sh run.sh -examplesRelation advisedby -target advisedby -- approximate 0.5 automode-input/setup_inds.txt out/dataModel_advisedby.json abs 5 UWCSEProcedure 
 ```      
-Examples in file:
+For examples in file:
 
 ```sh
     $ sh run.sh -examplesFile target/advisedby.csv -target advisedby -- approximate 0.5 automode-input/setup_inds.txt out/dataModel_advisedby.json abs 5 UWCSEProcedure 
@@ -134,13 +134,13 @@ The script does two things:
 2.  The one way inds and setup modes generated in step-1 will now be used to generate the final modes to learn target query.
     It runs AutoMode per query client to generate the final modes for given target query
     
-Examples in database
+For examples in database
 
 ```sh
     $ sh run_query.sh -examplesRelation query1_all_pos -target query  --   automode-input/query1_inds.txt automode-input/setup_modes.json out/dataModel_query1.json 0 CastorProcedure_query1
 ```  
 
-Examples in file
+For examples in file
 ```sh
     $ sh run_query.sh -examplesFile target/query1_all_pos.csv -target query  --   automode-input/query1_inds.txt automode-input/setup_modes.json out/dataModel_query1.json 0 CastorProcedure_query1
 ```   
