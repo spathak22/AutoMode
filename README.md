@@ -1,4 +1,5 @@
 # Automode: An automatic language bias generator system 
+Find more detail about the project on Arxiv : https://arxiv.org/pdf/1710.01420v1.pdf
 
 Following is the more generalized steps to run Automode for any dataset such as Immortals, UWCSE, IMDB, HIV, CORA,
 WebKB.
