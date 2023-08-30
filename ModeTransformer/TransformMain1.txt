@@ -1,0 +1,241 @@
+package castor.modetransform;
+
+import castor.modetransform.ModeGeneratorHelper;
+import castor.modetransform.transformmodel.Relation;
+import castor.modetransform.transformmodel.TransformationSchema;
+import castor.modetransform.transformmodel.TransformationTuple;
+import castor.settings.DataModel;
+import castor.settings.JsonSettingsReader;
+import castor.utils.Constants;
+import castor.utils.FileUtils;
+
+import com.google.gson.JsonObject;
+
+import org.apache.log4j.Logger;
+import org.voltdb.utils.StringInputStream;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Stream;
+
+public class TransformMain {
+
+
+    final static Logger logger = Logger.getLogger(TransformMain.class);
+
+    public static boolean generateModesUsingTranformation(String dataModelFile, String transformSchema, String outputFile) {
+        logger.info("Running ModeTransformation ");
+        // Get input mode information
+        JsonObject dataModelJson = FileUtils.convertFileToJSON(dataModelFile);
+        DataModel dataModel = readDataModelFromJson(dataModelJson);
+        TransformationSchema tSchema = new TransformationSchema();
+        List<String> modes = new ArrayList<String>();
+        Map<String, List<LinkedHashMap>> relationMap = new HashMap<>();
+        // Get input transformation information
+        readTransformationSchema(modes,transformSchema, tSchema, dataModel, relationMap);
+        //ModeGeneratorHelper.generateMode(tSchema, modes);
+        Boolean result = FileUtils.writeModeToJsonFormat(null, dataModel.getModeH().toString(), modes, dataModel.getSpName(), outputFile);
+        return result;
+    }
+
+
+    /*
+     * Read data model from JSON object
+     */
+    private static DataModel readDataModelFromJson(JsonObject dataModelJson) {
+        DataModel dataModel;
+        try {
+            logger.info("Reading mode file...");
+            dataModel = JsonSettingsReader.readDataModelForTransformation(dataModelJson);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return dataModel;
+    }
+
+    private static void readTransformationSchema(List<String> modes, String transformFile, TransformationSchema tSchema, DataModel dataModel, Map<String, List<LinkedHashMap>> relationMap) {
+        Stream<String> stream = null;
+        try {
+            logger.info("Reading Transformation file...");
+            stream = Files.lines(Paths.get(transformFile));
+            {
+                stream.filter(s -> !s.isEmpty()).forEach(s -> processTransformationSchema(modes, s, tSchema, dataModel, relationMap));
+            }
+        } catch (IOException e) {
+            logger.error("Error while processing tranformation file");
+            e.printStackTrace();
+        }
+        stream.close();
+    }
+
+    private static void processTransformationSchema(List<String> modes, String lineString, TransformationSchema tSchema, DataModel dataModel, Map<String, List<LinkedHashMap>> relationMap) {
+        lineString = lineString.replaceAll("\\s", "").toLowerCase();
+        String[] line = lineString.split(Constants.TransformDelimeter.ARROW.getValue());
+        TransformationTuple transformationTuple = null;
+        List<LinkedHashMap> result = null;
+        try {
+            List<String> sourceRelationList = createSourceRelationObject(line[0], dataModel, relationMap);
+            for (int i = 0; i < sourceRelationList.size(); i++) {
+                result = joinSource(modes, result, relationMap.get(sourceRelationList.get(i)));
+            }
+            createTargetRelationObject(line[1], result, modes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tSchema.addToMembersList(transformationTuple);
+    }
+
+
+
+    public static List<LinkedHashMap> joinSource(List<String> modes, List<LinkedHashMap> modesList1, List<LinkedHashMap> modesList2) {
+        if (modesList1 == null)
+            return modesList2;
+
+        List<LinkedHashMap> joinResult = new ArrayList<>();
+        List<LinkedHashMap> plusResult = new ArrayList<>();
+        //String joinKey = findJoinAttribute(modesList1.get(0), modesList2.get(0));
+        for (LinkedHashMap<String,String> sourceRelation1 : modesList1) {
+            for (LinkedHashMap<String,String> sourceRelation2 : modesList2) {
+                //String joinKey = findJoinAttribute(sourceRelation1, sourceRelation2);
+                LinkedHashMap<String,String> resultList = null;
+
+                resultList = new LinkedHashMap<>();
+                resultList.putAll(sourceRelation2);
+                resultList.putAll(sourceRelation1);
+
+                int plusCount = 0;
+                boolean invalid = false;
+                for (Map.Entry<String,String> map : resultList.entrySet()) {
+                    if (map.getValue().startsWith("+")) {
+                        plusCount++;
+                    }
+                    if (plusCount > 1) {
+                        invalid = true;
+                    }
+                }
+                if (!invalid) {
+                    joinResult.add(resultList);
+                }
+            }
+        }
+
+
+        //Run another For loop to handle duplicate + signs
+        for (LinkedHashMap<String,String> sourceRelation1 : plusResult) {
+            for (LinkedHashMap<String,String> sourceRelation2 : modesList1) {
+                //String joinKey = findJoinAttribute(sourceRelation1, sourceRelation2);
+                LinkedHashMap<String,String> resultList = null;
+
+                resultList = new LinkedHashMap<>();
+                resultList.putAll(sourceRelation2);
+                resultList.putAll(sourceRelation1);
+
+                int plusCount = 0;
+                boolean invalid = false;
+                for (Map.Entry<String,String> map : resultList.entrySet()) {
+                    if (map.getValue().startsWith("+")) {
+                        plusCount++;
+                    }
+                    if (plusCount > 1) {
+                        invalid = true;
+                    }
+                }
+                if (!invalid) {
+                    joinResult.add(resultList);
+                }
+            }
+        }
+
+            return joinResult;
+
+
+    }
+
+    public static String findJoinAttribute(LinkedHashMap<String,String> modes1, LinkedHashMap<String,String> modes2) {
+        for (Map.Entry<String,String> map1 : modes1.entrySet()) {
+            for (Map.Entry<String,String> map2 : modes2.entrySet()) {
+                if (map1.getKey().equals(map2.getKey())) {
+                    return map1.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
+    private static List<String> createSourceRelationObject(String sourceRelationString, DataModel dataModel, Map<String, List<LinkedHashMap>> relationMap) {
+        logger.info("Creating source relation objects using :: " + sourceRelationString);
+        String[] relations = sourceRelationString.split(Constants.TransformDelimeter.SLASH_CLOSE_PARA.getValue());
+        List<String> sourceRelationList = new ArrayList<>();
+        for (String relation : relations) {
+            String relationName = relation.substring(0, relation.indexOf(Constants.TransformDelimeter.OPEN_PARA.getValue()));
+            if (relationName.startsWith(Constants.TransformDelimeter.COMMA.getValue())) {
+                relationName = relation.substring(1, relationName.length());
+            }
+            List<LinkedHashMap> relationModeList = null;
+            if (relationMap.containsKey(relation)) {
+                relationModeList = relationMap.get(relation);
+            } else {
+                relationModeList = new ArrayList<>();
+                relationMap.put(relationName, relationModeList);
+            }
+
+            String attributes = (String) relation.subSequence(relation.indexOf(Constants.TransformDelimeter.OPEN_PARA.getValue()) + 1, relation.length());
+            String[] attributeArray = attributes.split(Constants.TransformDelimeter.COMMA.getValue());
+            List<List<String>> modesList = dataModel.getModesBMap().get(relationName);
+            //LinkedHashMap modeMaps = new LinkedHashMap<>();
+            for (List<String> mode : modesList) {
+                LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                int count = 0;
+                for (String str : mode) {
+                    map.put(attributeArray[count++], str);
+                }
+                relationModeList.add(map);
+            }
+            sourceRelationList.add(relationName);
+            //relationModeList.add(modeMaps);
+            //relationMap.put(relationName,modeMaps);
+        }
+        return sourceRelationList;
+    }
+
+    private static void createTargetRelationObject(String targetRelationString, List<LinkedHashMap> joinResults, List<String> modes) throws Exception {
+        logger.info("Creating target relation objects using :: " + targetRelationString);
+        List<Relation> targetRelationList = new ArrayList<Relation>();
+        String[] relations = targetRelationString.split(Constants.TransformDelimeter.SLASH_CLOSE_PARA.getValue());
+        for (String relation : relations) {
+            String relationName = relation.substring(0, relation.indexOf(Constants.TransformDelimeter.OPEN_PARA.getValue()));
+            if (relationName.startsWith(Constants.TransformDelimeter.COMMA.getValue())) {
+                relationName = relation.substring(1, relationName.length());
+            }
+            String attributes = (String) relation.subSequence(relation.indexOf(Constants.TransformDelimeter.OPEN_PARA.getValue()) + 1, relation.length());
+            Relation targetRelation = new Relation(relationName);
+            List<Map<String, Set<String>>> targetAttributesList = new ArrayList<Map<String, Set<String>>>();
+            List<Set<String>> attributeTypes = new ArrayList<Set<String>>();
+            String[] attributeArray = attributes.split(Constants.TransformDelimeter.COMMA.getValue());
+
+            List<String> modeString = null;
+            for (LinkedHashMap joinList : joinResults) {
+                modeString = new ArrayList<>();
+                for (String attribute : attributeArray) {
+                    modeString.add(getAttributeValue(joinList,attribute));
+                    //modeString.add(joinList.get(joinList.indexOf(attribute)).toString());
+                }
+                String finalModeString = modeString.toString().substring(1, modeString.toString().length() - 1);
+                finalModeString = finalModeString.replaceAll("\\s", "");
+                logger.info(relationName.toLowerCase() + "(" + finalModeString + ")");
+                modes.add(relationName.toLowerCase() + "(" + finalModeString + ")");
+            }
+        }
+    }
+
+
+
+    public static String getAttributeValue(LinkedHashMap<String,String> joinList, String attribute){
+            if(joinList.containsKey(attribute))
+                return joinList.get(attribute).toString();
+        return null;
+
+    }
+}
